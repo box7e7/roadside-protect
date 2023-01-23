@@ -14,8 +14,8 @@ const AnyReactComponent = ({ text,loc,dispatch }) => {
             }}>
                 <div className="flex justify-center items-center" onClick={()=>{
                     console.info("/////// clicked ////////")
-                    dispatch({type:"LOCATION",location:loc})
-                    router.push("/dispatch")
+                    // dispatch({type:"LOCATION",location:loc})
+                    // router.push("/dispatch")
 
                 }}>
                     <h1 className=" text-lg ">Confirm address</h1>
@@ -36,12 +36,13 @@ const handleApiLoaded = (map, maps) => {
     // use map and maps objects
   };
 
-export default function Map({loc,dispatch}) {
+export default function Map({loc}) {
 
     let defaultProps = {
         center: [loc.lat, loc.long],
-        zoom: 17,
-        greatPlaceCoords: {lat: 59.724465, lng: 30.080121}
+        zoom: 11,
+        // greatPlaceCoords: {lat: 29.712020, lng: -95.510040}
+        greatPlaceCoords: {lat: loc.lat, lng: loc.long}
       };
   
   
@@ -52,7 +53,9 @@ export default function Map({loc,dispatch}) {
           
           <GoogleMapReact
             bootstrapURLKeys={{ key: "AIzaSyBpQhB29JAfsoWUbwVJCPocQl2s2cWLMDI" }}
-            defaultCenter={defaultProps.center}
+            initialCenter={defaultProps.center}
+            // defaultCenter={defaultProps.center}
+            center={defaultProps.center}
             defaultZoom={defaultProps.zoom}
             yesIWantToUseGoogleMapApiInternals
             onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
@@ -62,7 +65,7 @@ export default function Map({loc,dispatch}) {
               lng={loc.long}
               text="My Marker"
               loc={loc}
-              dispatch={dispatch}
+              // dispatch={dispatch}
             />
           </GoogleMapReact>
     );

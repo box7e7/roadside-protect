@@ -18,8 +18,8 @@ export default function Navbar(){
         <div id="navbar" className="bg-gray-800  sticky z-10 top-0 w-[100%]">
 
           <div className="hidden md:flex md:flex-row justify-center items-center pt-5">
-            <a  href="tel:7135424467" className="white-100 text-white font-sans text-[17px] font-bold">1-713-542-4467</a>
-            <a  href="tel:7135424467" className=" bg-[#6366F1] p-2 rounded-lg ml-2 w-32 text-slate-100 hover:bg-[#585af1] text-center hover:cursor-pointer">Call now</a>
+            <a  href="tel:281-602-8213" className="white-100 text-white font-sans text-[17px] font-bold">1-281-602-8213</a>
+            <a  href="tel:281-602-8213" className=" bg-[#6366F1] p-2 rounded-lg ml-2 w-32 text-slate-100 hover:bg-[#585af1] text-center hover:cursor-pointer">Call now</a>
           </div>
 
           <div className="mx-auto  px-2 sm:px-6 lg:px-8 w-full pb-3">
@@ -80,8 +80,8 @@ export default function Navbar(){
                
                
                 <div className="flex flex-shrink-0 items-center left-0 right-0  ">
-                  <img className="block h-14 w-auto lg:hidden ml-12" src="/logo.png" alt="Your Company"/>
-                  <img className="hidden h-14 w-auto lg:block" src="/logo.png" alt="Your Company"/>
+                  <img className="block h-16 w-auto lg:hidden ml-12" src="/logo_momentum.png" alt="Your Company"/>
+                  <img className="hidden h-20 w-auto lg:block" src="/logo_momentum.png" alt="Your Company"/>
                 </div>
 
                 
@@ -105,7 +105,7 @@ export default function Navbar(){
 
               <div className="md:hidden  flex flex-row justify-center items-center pt-5 left-0 pb-5">
                 {/* <h1 className="white-100 text-white font-sans text-[13px] font-bold">1-713-542-4467</h1> */}
-                <a  href="tel:7135424467" className=" bg-[#6366F1] p-2 rounded-lg ml-2 w-24 text-[14px] text-slate-100 hover:bg-[#585af1] text-center hover:cursor-pointer mr-2">Call now</a>
+                <a  href="tel:2816028213" className=" bg-[#6366F1] p-2 rounded-lg ml-2 w-24 text-[14px] text-slate-100 hover:bg-[#585af1] text-center hover:cursor-pointer mr-2">Call now</a>
               </div>
           
             </div>
