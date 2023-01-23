@@ -14,3 +14,10 @@
     @apply absolute text-black w-auto p-2 m-2 min-w-max  
     transition-all duration-100 origin-left scale-100 top-20 font-bold;
   }
+
+  .pac-container:after {
+    background-image: none !important;
+    height: 0px;
+    padding: 0;
+    margin: 0;
+}

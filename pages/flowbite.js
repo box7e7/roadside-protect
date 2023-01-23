@@ -1,6 +1,8 @@
 
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+import Script from 'next/script'
 import { PrismaClient } from '@prisma/client'
 import bg from "../images/blue_bg1.png"
 import logo from "../images/logo_momentum.png"
@@ -67,6 +69,12 @@ export default function Design({data}){
    return(
 
          <>
+            <Head>
+              <script  defer src="/scripts/initMap.js"></script>
+              <script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoJdqzicSsMRPrMk_OVUoQDaMPeNBi-aU&libraries=places&callback=initMap"></script>
+            </Head>
+            <Script src="/scripts/initMap.js"></Script>
+
             <div id="navigation" className="w-full h-20 bg-slate-100 sticky top-0 flex justify-center items-center z-10">
               <Image className="h-20 w-48" src={logo}  alt=""/>
             </div>
