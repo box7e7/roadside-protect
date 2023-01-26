@@ -6,6 +6,7 @@ import Context from "../components/ContextFile";
 import Head from 'next/head'
 import Script from 'next/script'
 import { PrismaClient } from '@prisma/client'
+import PopUpQ from '../components/PopUpQ';
 import bg from "../images/blue_bg1.png"
 import logo from "../images/logo_momentum.png"
 import clock from "../images/fast.png"
@@ -31,6 +32,7 @@ export default function GetAddress(){
 
   const router = useRouter()
   const [address,setAddress]=useState({address:null})
+  const [visible,setVisible]=useState(false)
   const {mainState,dispatch}=useContext(Context)
 
 
@@ -95,11 +97,13 @@ export default function GetAddress(){
 
                 {address.address ?<div className='absolute top-[350px] md:top-[350px] text-slate-900 border-2 border-slate-200 p-3 px-10 rounded-md bg-slate-200 hover:bg-slate-300 hover:cursor-pointer animate-bounce hover:animate-none' onClick={()=>{
                   dispatch({type:"ADDRESS",address:address.address})
+                  setVisible(true)
                 }}>Confirm address</div> : null}
 
                 {/* above your code */}
                 
             </div>
+            <PopUpQ visible={visible} setVisible={setVisible} className="h-[100%]" />
 
             <div className='bg-gray-100 pb-8 pt-1'>
               <div className="flex flex-row  justify-center m-10">

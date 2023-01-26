@@ -2,9 +2,11 @@
 
 import { useContext,useState } from 'react';
 import {Modal,Button,HiOutlineExclamationCircle} from 'flowbite-react'
+import Image from 'next/image'
 import Context from "../components/ContextFile";
 import SelectCar from './SelectCar'
-import carlist from "../json/carlist.json"
+import car from "../images/car_Blue.png"
+
 
 const getSelectedValues=(setSelectedValues)=>{
     let btns=document.getElementsByTagName("button")
@@ -59,10 +61,13 @@ const onClose=()=>{
         
 
       
-        <div className='flex justify-center pb-5'>
+        <div className='flex justify-center items-center flex-col pb-5'>
+            <Image className="h-36 w-48 mb-10" src={car}  alt=""/>
             <div className='text-2xl font-bold'>Vehicle Information</div>
         </div>
         <SelectCar></SelectCar>
+
+        {/* Here Next button */}
         <div className='w-full flex items-center justify-center py-10'>
             <Button pill={true} className='w-[70%] font-bold' onClick={function(){
                   let btns=document.getElementsByTagName("button")
@@ -92,6 +97,7 @@ const onClose=()=>{
                 <div className='text-lg'>Next</div>
             </Button>
         </div>
+        {/* Above Next Button */}
        
         </Modal.Body>
       
