@@ -146,8 +146,9 @@ export default function TestimonialsPages({data}){
              {/* Button to leave a review */}
              <div className="w-full flex justify-center items-center mb-[-40px] pt-4 ">
                      <div className=" hover:shadow-lg hover:cursor-pointer border-2 border-slate-300 p-2 rounded-xl flex justify-center items-center space-x-2" onClick={()=>{
-                          let modal = document.getElementById("myModal");
-                          modal.style.display = "block";
+                           let modal = document.getElementById("myModal");
+                           modal.classList.remove("hidden")
+                           modal.style.display = "block";
                      }}>
                          <FaPen className="" style={{color:"#6366F1"}}/>
                          <h1 className="text-slate-600">Write a review</h1>

@@ -52,25 +52,25 @@ export default function About(){
                
                 <div className=" flex flex-col justify-center items-center">    
                     <div className=" "  >
-                        <div className="flex flex-row  items-center"> 
+                        <div className="flex flex-row  items-center py-1"> 
                             <FaMapMarkerAlt style={{color:"#6366F1"}} />
-                            <p className="pl-3" style={{}}>3730 Kirby Dr suite 1200, Houston TX 77098</p>
+                            <p className="pl-3 text-sm md:text-lg" style={{}}>3730 Kirby Dr suite 1200, Houston TX 77098</p>
                           
                         </div> 
 
-                        <div className="flex flex-row  items-center">   
+                        <div className="flex flex-row  items-center py-1">   
                             <FaEnvelope style={{color:"#6366F1"}}/>
-                            <p className="pl-3">support@momentum-roadside.com</p>
+                            <p className="pl-3 text-sm md:text-lg">support@momentum-roadside.com</p>
                         </div>   
                         
-                        <div className="flex flex-row  items-center"> 
+                        <div className="flex flex-row  items-center py-1"> 
                             <FaPhoneAlt style={{color:"#6366F1"}}/>
-                            <p className="pl-3">281-602-8213</p>
+                            <p className="pl-3 text-sm md:text-lg">281-602-8213</p>
                         </div>     
 
-                        <div className="flex flex-row  items-center">     
+                        <div className="flex flex-row  items-center py-1">     
                             <FaClock style={{color:"#6366F1"}}/>
-                            <p className="pl-3">24 Hours a day, 7 days a week</p>
+                            <p className="pl-3 text-sm md:text-lg">24 Hours a day, 7 days a week</p>
                         </div>    
                     </div>
                 

@@ -9,4 +9,5 @@ module.exports = {
     extend: {},
   },
   plugins: ["flowbite/plugin"],
+  important: true,
 }

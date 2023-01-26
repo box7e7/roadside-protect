@@ -1,20 +1,24 @@
-import React from "react";
+import React,{useContext} from "react";
 import { useRouter } from 'next/router'
+import Context from "../components/ContextFile";
 import GoogleMapReact from 'google-map-react';
-import { FaLowVision } from "react-icons/fa";
 
-const AnyReactComponent = ({ text,loc,dispatch }) => {
+
+
+
+const AnyReactComponent = ({ loc,dispatch,textArea,setVisible }) => {
 
     const router = useRouter()
-    console.log("////// loc from  Map component ///////\n",loc)
+    // console.log("////// loc from  Map component ///////\n",loc)
     return(
        <div className="flex flex-col  items-center relative -top-16  hover:cursor-pointer ">
-            <div className="w-48 h-10 text-white rounded-md flex justify-center items-center relative  bg-green-600 hover:bg-green-700" onClick={()=>{
+            <div  className="w-48 h-10 text-white rounded-md flex justify-center items-center relative  bg-green-600 hover:bg-green-700" onClick={()=>{
                 console.info("/////// clicked ////////")
             }}>
                 <div className="flex justify-center items-center" onClick={()=>{
                     console.info("/////// clicked ////////")
-                    // dispatch({type:"LOCATION",location:loc})
+                    dispatch({type:"ADDRESS",address:textArea.street})
+                    setVisible(true)
                     // router.push("/dispatch")
 
                 }}>
@@ -28,6 +32,7 @@ const AnyReactComponent = ({ text,loc,dispatch }) => {
 
             <div className="w-1 h-6 bg-green-600  hover:bg-green-700"></div>
             <div className=" w-4 h-2  bg-green-600 rounded-md  -top-2 relative  hover:bg-green-700 "></div>
+           
         </div>
     // <h1>{text}</h1>
     )
@@ -36,7 +41,7 @@ const handleApiLoaded = (map, maps) => {
     // use map and maps objects
   };
 
-export default function Map({loc}) {
+export default function Map({loc,textArea,setVisible}) {
 
     let defaultProps = {
         center: [loc.lat, loc.long],
@@ -44,6 +49,8 @@ export default function Map({loc}) {
         // greatPlaceCoords: {lat: 29.712020, lng: -95.510040}
         greatPlaceCoords: {lat: loc.lat, lng: loc.long}
       };
+
+      const {mainState,dispatch}=useContext(Context)
   
   
     return (
@@ -51,6 +58,7 @@ export default function Map({loc}) {
           
           
           
+      
           <GoogleMapReact
             bootstrapURLKeys={{ key: "AIzaSyBpQhB29JAfsoWUbwVJCPocQl2s2cWLMDI" }}
             initialCenter={defaultProps.center}
@@ -65,8 +73,11 @@ export default function Map({loc}) {
               lng={loc.long}
               text="My Marker"
               loc={loc}
-              // dispatch={dispatch}
+              dispatch={dispatch}
+              textArea={textArea}
+              setVisible={setVisible}
             />
           </GoogleMapReact>
+         
     );
   }

@@ -1,4 +1,4 @@
-import { useState,useContext } from "react";
+import { useState,useContext,useEffect } from "react";
 import Context from "../components/ContextFile";
 import { useRouter } from 'next/router'
 import Image from 'next/image'
@@ -17,11 +17,6 @@ import iconBatteries from "../images/icon_battery_0.png"
 import unlockIcon from "../images/icon_lockout_0.png"
 
 
-async function find_records(prisma) {
-    const users = await prisma.reviews.findMany()
-    console.log(users)
-    return users
-   }
 
 const geoLoc=(setLoc,setAgent,dispatch,router)=>{
     var options = {
@@ -54,48 +49,34 @@ const geoLoc=(setLoc,setAgent,dispatch,router)=>{
 
   
   
-  export async function getServerSideProps(){
-  
-    const prisma = new PrismaClient()
-    return find_records(prisma)
-    .then(async (res) => {
-    //   console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n",res)
-      await prisma.$disconnect()
-      return{
-        props:{
-            data:res
-        }
-    }
-      
-    
-
-    })
-    .catch(async (e) => {
-      console.error(e)
-      await prisma.$disconnect()
-
-      return{
-        props:{
-            data:[]
-        }
-    }
-
-     
-    })
-  
-     
-  }
 
 
 
 
 
-export default function Design({data}){
+
+export default function Location(){
 
   const [loc,setLoc]=useState({lat: null, long: null})
   const [agent,setAgent]=useState(null)
   const {mainState,dispatch}=useContext(Context)
   const router = useRouter()
+
+ useEffect(()=>{
+
+  let elm=document.getElementsByClassName("dispatch-icon")
+  for (let i=0;i<elm.length;i++){
+    console.log("$$$$$$$$$$$$$$$$$",elm[i].innerText)
+    elm[i].classList.remove("bg-gray-400")
+    elm[i].classList.add("bg-gray-300")
+       
+    if (elm[i].innerText==mainState.service){
+          elm[i].classList.remove("bg-gray-300")
+          elm[i].classList.add("bg-gray-400")
+       }
+  }
+
+ },[mainState])
   
   console.log("/////// Main state ////////\n",mainState)
    return(
@@ -130,7 +111,7 @@ export default function Design({data}){
                   </div>
                  
                   <button className="border-2 border-slate-100 bg-slate-200 w-48 rounded-sm text-sm mt-4 p-1 hover:bg-slate-300 hover:border-slate-300" onClick={()=>{
-                    router.push("/address")
+                    router.push("/getAddress")
                   }}>ENTER ADDRESS</button>
                 </div>
 
@@ -140,33 +121,57 @@ export default function Design({data}){
 
             <div className='bg-gray-100 pb-8 pt-1'>
               <div className="flex flex-row  justify-center m-10">
-                <div className='relative mx-5' onClick={()=>{
-                  
-                }}>
-                <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon}/>} />
+                
+                <div className='relative mx-5 hover:cursor-pointer ' onClick={()=>{
+                  router.push("/location")
+                  dispatch({type:"SERVICE",service:"Tow"})
+                  }}>
+                  <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon}/>} />
                 </div>
               
-                <div className='relative mx-5'>
-                <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon}/>} />
+                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                  router.push("/location")
+                  dispatch({type:"SERVICE",service:"Tire"})
+                  }}>
+                  <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon}/>} />
                 </div>
-                <div className='relative mx-5'>
-                <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud}/>} />
+                
+                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                  router.push("/location")
+                  dispatch({type:"SERVICE",service:"Stuck"})
+                  }}>
+                  <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud}/>} />
                 </div>
+
               </div>
 
               <div className="flex flex-row  justify-center m-10">
-                <div className='relative mx-5'>
-                <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon}/>} />
+                
+                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                  router.push("/location")
+                  dispatch({type:"SERVICE",service:"Fuel"})
+                  }}>
+                  <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon}/>} />
                 </div>
               
-                <div className='relative mx-5'>
-                <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries}/>} />
+                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                    router.push("/location")
+                    dispatch({type:"SERVICE",service:"Battery"})
+                  }}>
+                    <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries}/>} />
                 </div>
-                <div className='relative mx-5'>
-                <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon}/>} />
+                
+                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                  router.push("/location")
+                  dispatch({type:"SERVICE",service:"Unlock"})
+                  }}>
+                  <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon}/>} />
                 </div>
+              
               </div>
+            
             </div>
+
 
             
          </>

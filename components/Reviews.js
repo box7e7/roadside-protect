@@ -39,13 +39,14 @@ export default function Review(){
    
     return(
 
-        <div id="myModal" className="fixed hidden z-10 pt-[100px] left-0 top-0 w-[100%] h-[100%] overflow-auto bg-[#000000dd]" onClick={windowOnClick}>
+        <div id="myModal" className="fixed hidden  z-10 pt-[100px] left-0 top-0 w-[100%] h-[100%] overflow-auto bg-[#000000dd]" onClick={windowOnClick}>
 
       
-        <div className="bg-[#ffffffe6] mx-auto p-[20px] border-1 border-[#888] w-[80%] rounded-xl">
+        <div className="bg-[#ffffffe6] mx-auto p-[20px] border-1 border-[#888] w-[80%] rounded-xl ">
             <span className="text-[#aaaaaa] float-right font-bold text-2xl hover:text-black hover:cursor-pointer" onClick={()=>{
 
                 let modal = document.getElementById("myModal");
+                modal.classList.add("hidden")
                 modal.style.display = "none";
                   
             }}>&times;</span>

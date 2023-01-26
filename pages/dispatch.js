@@ -1,6 +1,6 @@
 
 import { useState,useContext,useEffect } from "react";
-// import { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import Context from "../components/ContextFile";
 import Map from "../components/Map";
 import Image from 'next/image'
@@ -17,6 +17,7 @@ import fuelIcon from "../images/fuel-icon_blue.png"
 import iconBatteries from "../images/icon_battery_0.png"
 import unlockIcon from "../images/icon_lockout_0.png"
 import axios from 'axios'; 
+import PopUpQ from "../components/PopUpQ";
 
 
 function getAddress(region,setTextArea) {
@@ -73,21 +74,48 @@ const geoLoc=(setLoc,setAgent)=>{
 
 
 export default function Design(){
-
+  
+  const router = useRouter()
   const [loc,setLoc]=useState({lat: 29.712020, long: -95.510040})
   const [agent,setAgent]=useState(null)
+  const [visible,setVisible]=useState(false)
   const [textArea,setTextArea]=useState({street:null})
   const {mainState,dispatch}=useContext(Context)
-  console.log("/////// loc ////////\n",loc)
+
+  // console.log("/////// loc ////////\n",loc)
+  console.log("/////// mainState ////////\n",mainState)
 
   useEffect(()=>{
     mainState.location ? getAddress(mainState.location,setTextArea) : getAddress(loc,setTextArea)
   },[mainState])
 
-  console.log("////// Text area //////\n",textArea)
+
+  useEffect(()=>{
+
+    let elm=document.getElementsByClassName("dispatch-icon")
+    for (let i=0;i<elm.length;i++){
+      // console.log("$$$$$$$$$$$$$$$$$",elm[i].innerText)
+      elm[i].classList.remove("bg-gray-400")
+      elm[i].classList.add("bg-gray-300")
+         
+      if (elm[i].innerText==mainState.service){
+            elm[i].classList.remove("bg-gray-300")
+            elm[i].classList.add("bg-gray-400")
+         }
+    }
+  
+   },[mainState])
+
+
+ 
+
+
+    
+
+  // console.log("////// Text area //////\n",textArea)
    return(
 
-         <>
+         <div className="h-[100%]">
             <div id="navigation" className="w-full h-20 bg-slate-100 sticky top-0 flex justify-center items-center z-20 shadow-xl">
               <Image className="h-20 w-48" src={logo}  alt=""/>
             </div>
@@ -98,7 +126,7 @@ export default function Design(){
                 <input id="autocomplete" value={textArea.street ? (!textArea.street.includes("Error") ? textArea.street : null) : null }  className="absolute top-24 bg-slate-600 z-10 w-[90%] p-2 rounded-md text-white outline-1 outline-slate-400 bg-opacity-60 placeholder-gray-100 hover:cursor-pointer hover:bg-opacity-75" type="text" placeholder="Enter address here"/>
                 <div className="w-[100%] h-[450px]  overflow-hidden">
                     <div className="w-full  h-full"> 
-                        <Map loc={mainState.location ? mainState.location : loc } /> 
+                        <Map loc={mainState.location ? mainState.location : loc} textArea={textArea} setVisible={setVisible} /> 
                     </div> 
                 </div>
             
@@ -108,36 +136,60 @@ export default function Design(){
 
             <div className='bg-gray-100 pb-8 pt-1'>
               <div className="flex flex-row  justify-center m-10">
-                <div className='relative mx-5' onClick={()=>{
-                  
-                }}>
-                <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon}/>} />
+                
+                <div className='relative mx-5 hover:cursor-pointer ' onClick={()=>{
+                  router.push("/location")
+                  dispatch({type:"SERVICE",service:"Tow"})
+                  }}>
+                  <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon}/>} />
                 </div>
               
-                <div className='relative mx-5'>
-                <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon}/>} />
+                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                  router.push("/location")
+                  dispatch({type:"SERVICE",service:"Tire"})
+                  }}>
+                  <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon}/>} />
                 </div>
-                <div className='relative mx-5'>
-                <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud}/>} />
+                
+                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                  router.push("/location")
+                  dispatch({type:"SERVICE",service:"Stuck"})
+                  }}>
+                  <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud}/>} />
                 </div>
               </div>
 
               <div className="flex flex-row  justify-center m-10">
-                <div className='relative mx-5'>
-                <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon}/>} />
+                
+                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                  router.push("/location")
+                  dispatch({type:"SERVICE",service:"Fuel"})
+                  }}>
+                  <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon}/>} />
                 </div>
               
-                <div className='relative mx-5'>
-                <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries}/>} />
+                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                    router.push("/location")
+                    dispatch({type:"SERVICE",service:"Battery"})
+                  }}>
+                    <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries}/>} />
                 </div>
-                <div className='relative mx-5'>
-                <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon}/>} />
+                
+                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                  router.push("/location")
+                  dispatch({type:"SERVICE",service:"Unlock"})
+                  }}>
+                  <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon}/>} />
                 </div>
+              
               </div>
+            
             </div>
 
+            <PopUpQ visible={visible} setVisible={setVisible} className="h-[100%]" />
+
             
-         </>
+         </div>
 
     )
 
