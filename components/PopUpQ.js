@@ -1,51 +1,38 @@
 
 
 import { useContext,useState } from 'react';
+import Head from 'next/head'
+import Script from 'next/script'
 import {Modal,Button,HiOutlineExclamationCircle} from 'flowbite-react'
-import Image from 'next/image'
+import Step1 from './Step1';
+import Step2 from './Step2';
+import Step3 from './Step3';
+import Step4 from './Step4';
 import Context from "../components/ContextFile";
-import SelectCar from './SelectCar'
-import car from "../images/car_Blue.png"
 
 
-const getSelectedValues=(setSelectedValues)=>{
-    let btns=document.getElementsByTagName("button")
-    let arr1=[]
-    for(let i=0;i<btns.length;i++){
-
-        if(btns[i].attributes.id?.value.includes("headlessui-listbox-button")){
-        console.log("////// modal buttons //////",btns[i].getElementsByTagName('span')[1].innerHTML)
-            arr1.push(btns[i].getElementsByTagName('span')[1].innerHTML)
-            if(btns[i].getElementsByTagName('span')[1].innerHTML.includes("Select")){
-                btns[i].classList.add("outline")
-                btns[i].classList.add("outline-red-200")
-            }
-        }
-}
-setSelectedValues(arr1)
-}
-
-export default function PopUpQ({visible,setVisible,onClick}){
 
 
+
+
+export default function PopUpQ({visible,setVisible}){
 
 
 const {mainState,dispatch}=useContext(Context)
-
-
-
-
-
-// console.log(Object.keys(carlist))
-   
-
 const onClose=()=>{
         setVisible(false)
     }
 
     return(
    
-     <Modal className='h-full pt-5'
+    <>
+        
+        <Head>
+            <script  defer src="/scripts/initMap.js"></script>
+            <script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoJdqzicSsMRPrMk_OVUoQDaMPeNBi-aU&libraries=places&callback=initMap"></script>
+        </Head>
+        <Script src="/scripts/initMap.js"></Script>
+        <Modal className='h-full  pt-5'
         show={visible}
         size="2xl"
         popup={true}
@@ -57,51 +44,18 @@ const onClose=()=>{
         <Modal.Body>
 
 
+        {mainState.steps==1 ? <Step1/> : null}
+        {mainState.steps==2 ? <Step2/> : null}
+        {mainState.steps==3 ? <Step3/> : null}
+        {mainState.steps==4 ? <Step4/> : null}
         
-        
-
       
-        <div className='flex justify-center items-center flex-col pb-5'>
-            <Image className="h-36 w-48 mb-10" src={car}  alt=""/>
-            <div className='text-2xl font-bold'>Vehicle Information</div>
-        </div>
-        <SelectCar></SelectCar>
-
-        {/* Here Next button */}
-        <div className='w-full flex items-center justify-center py-10'>
-            <Button pill={true} className='w-[70%] font-bold' onClick={function(){
-                  let btns=document.getElementsByTagName("button")
-                  let arr1=[]
-                  let arr_boolean=[]
-                  for(let i=0;i<btns.length;i++){
-              
-                      if(btns[i].attributes.id?.value.includes("headlessui-listbox-button")){
-                    //   console.log("////// modal buttons //////",btns[i].getElementsByTagName('span')[1].innerHTML)
-                          arr_boolean.push(btns[i].getElementsByTagName('span')[1].innerHTML.includes("Select") ? false : true)
-                          arr1.push(btns[i].getElementsByTagName('span')[1].innerHTML)
-                          if(btns[i].getElementsByTagName('span')[1].innerHTML.includes("Select")){
-                              btns[i].classList.add("outline")
-                              btns[i].classList.add("outline-red-200")
-                          }
-                      }
-              }
-              
-              if (arr_boolean.includes(false)){
-                console.log("//// All fields are required ////")
-              }
-              else{
-                dispatch({type:"VEHICLE",vehicle:{make:arr1[0],model:arr1[1],color:arr1[2],year:arr1[3]}})
-              }
-              
-            }}>
-                <div className='text-lg'>Next</div>
-            </Button>
-        </div>
-        {/* Above Next Button */}
+       
        
         </Modal.Body>
       
-    </Modal>
+        </Modal>
+    </>
 
 
   

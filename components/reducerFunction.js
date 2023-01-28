@@ -10,6 +10,10 @@ const reducerFunction=(state,action)=>{
       return {...state,address: action.address}
     case 'VEHICLE':
       return {...state,vehicle: action.vehicle}
+    case 'STEPS':
+      return {...state,steps: action.steps}  
+    case 'DROPOFFADDRESS':
+      return {...state,dropoffAddress: action.dropoffAddress}  
     default:
     return state
    }

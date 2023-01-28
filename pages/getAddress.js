@@ -77,11 +77,11 @@ export default function GetAddress(){
    return(
 
          <>
-            <Head>
+            {/* <Head>
               <script  defer src="/scripts/initMap.js"></script>
               <script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoJdqzicSsMRPrMk_OVUoQDaMPeNBi-aU&libraries=places&callback=initMap"></script>
             </Head>
-            <Script src="/scripts/initMap.js"></Script>
+            <Script src="/scripts/initMap.js"></Script> */}
 
             <div id="navigation" className="w-full h-20 bg-slate-100 sticky top-0 flex justify-center items-center z-10">
               <Image className="h-20 w-48" src={logo}  alt=""/>
@@ -95,8 +95,9 @@ export default function GetAddress(){
                 </div>
 
 
-                {address.address ?<div className='absolute top-[350px] md:top-[350px] text-slate-900 border-2 border-slate-200 p-3 px-10 rounded-md bg-slate-200 hover:bg-slate-300 hover:cursor-pointer animate-bounce hover:animate-none' onClick={()=>{
+                {address.address?<div className='absolute top-[350px] md:top-[350px] text-slate-900 border-2 border-slate-200 p-3 px-10 rounded-md bg-slate-200 hover:bg-slate-300 hover:cursor-pointer animate-bounce hover:animate-none' onClick={()=>{
                   dispatch({type:"ADDRESS",address:address.address})
+                  dispatch({type:"STEPS",steps:1})
                   setVisible(true)
                 }}>Confirm address</div> : null}
 

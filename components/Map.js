@@ -18,6 +18,7 @@ const AnyReactComponent = ({ loc,dispatch,textArea,setVisible }) => {
                 <div className="flex justify-center items-center" onClick={()=>{
                     console.info("/////// clicked ////////")
                     dispatch({type:"ADDRESS",address:textArea.street})
+                    dispatch({type:"STEPS",steps:1})
                     setVisible(true)
                     // router.push("/dispatch")
 

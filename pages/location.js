@@ -28,7 +28,7 @@ const geoLoc=(setLoc,setAgent,dispatch,router)=>{
       const success=(position)=>{
         setLoc({lat:position.coords.latitude,long:position.coords.longitude})
         dispatch({type:"LOCATION",location:{lat:position.coords.latitude,long:position.coords.longitude}})
-        router.push("/dispatch")
+        router.push("/findMe")
       }
   
       const error=(error)=>{
