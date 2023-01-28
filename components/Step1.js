@@ -1,6 +1,7 @@
 
 import { useContext,useState } from 'react';
 import {Button} from 'flowbite-react'
+import Progress from './Progress';
 import Context from "./ContextFile"
 
 
@@ -37,6 +38,7 @@ export default  function Step1(){
     console.log("///// from step1 //////",mainState.service)
     return (
         <div>
+          
             <div className='flex justify-center items-center flex-col pb-5'>
                 
                 <div className='text-2xl font-bold'>{mainState.service} Questions</div>

@@ -14,6 +14,8 @@ const reducerFunction=(state,action)=>{
       return {...state,steps: action.steps}  
     case 'DROPOFFADDRESS':
       return {...state,dropoffAddress: action.dropoffAddress}  
+    case 'CUSTOMERINFO':
+      return {...state,customerInfo: action.customerInfo}  
     default:
     return state
    }

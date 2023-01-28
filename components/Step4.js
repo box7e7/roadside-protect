@@ -1,8 +1,86 @@
 
+import validator from 'validator'
+import {useContext} from 'react'
 import {Button} from 'flowbite-react'
+import Context from "../components/ContextFile";
 
+
+
+function onChangeTextName(e) {
+   
+    // console.log(e.target.value)
+    if (e.target.value.length!==0){
+      document.querySelector('#contact_name').classList.replace('outline-slate-200','outline-green-300')
+      document.querySelector('#contact_name').classList.replace('outline-red-300','outline-green-300')
+      document.querySelector('#contact_name').classList.replace('focus:outline-red-300','focus:outline-green-300')
+    }
+    else{
+      document.querySelector('#contact_name').classList.replace('outline-green-300','outline-red-300')
+      document.querySelector('#contact_name').classList.replace('focus:outline-green-300','focus:outline-red-300')
+    }
+  }
+
+
+function onChangeEmail(e) {
+ 
+    // console.log(e.target.value)
+    if (validator.isEmail(document.querySelector('#contact_email').value)){
+      document.querySelector('#contact_email').classList.replace('outline-slate-200','outline-green-300')
+      document.querySelector('#contact_email').classList.replace('outline-red-300','outline-green-300')
+      document.querySelector('#contact_email').classList.replace('focus:outline-red-300','focus:outline-green-300')
+    }
+    else {
+      document.querySelector('#contact_email').classList.replace('outline-green-300','outline-red-300')
+      document.querySelector('#contact_email').classList.replace('outline-slate-200','outline-red-300')
+      document.querySelector('#contact_email').classList.replace('focus:outline-green-300','focus:outline-red-300')
+    }
+    }
+
+function onChangePhoneNumber(e) {
+
+    // console.log(validator.isMobilePhone(document.querySelector('#contact_phone').value))
+    if (validator.isMobilePhone(document.querySelector('#contact_phone').value)){
+        document.querySelector('#contact_phone').classList.replace('outline-slate-200','outline-green-300')
+        document.querySelector('#contact_phone').classList.replace('outline-red-300','outline-green-300')
+        document.querySelector('#contact_phone').classList.replace('focus:outline-red-300','focus:outline-green-300')
+    }
+    else if(!validator.isMobilePhone(document.querySelector('#contact_phone').value)){
+        document.querySelector('#contact_phone').classList.replace('outline-green-300','outline-red-300')
+        document.querySelector('#contact_phone').classList.replace('outline-slate-200','outline-red-300')
+        document.querySelector('#contact_phone').classList.replace('focus:outline-green-300','focus:outline-red-300')
+    }
+    }
+
+function getData(e,dispatch){
+
+        const userName=document.querySelector('#contact_name').value
+        const email=document.querySelector('#contact_email').value
+        const phone=document.querySelector('#contact_phone').value
+        
+      
+      
+        let isMobilePhone=validator.isMobilePhone(document.querySelector('#contact_phone').value)
+        let isEmail=validator.isEmail(document.querySelector('#contact_email').value)
+        let textName= document.querySelector('#contact_name').value.length!==0 ? true : false
+    
+        
+        if(isMobilePhone && isEmail && textName){
+      
+           dispatch({type:"CUSTOMERINFO",customerInfo:{fullName:userName,email:email,phone:phone}})
+           dispatch({type:"STEPS",steps:5})
+        
+        }
+        else{
+      
+          }
+      
+        }
 
 export default function Step4(){
+
+    const {mainState,dispatch}=useContext(Context)
+
+    // console.log(mainState)
 
     return(
         <>
@@ -13,25 +91,15 @@ export default function Step4(){
                     <div className='text-2xl font-bold'>Contact Information</div>
                 </div>
 
-                <input className="mb-7 w-[90%] p-2 outline-slate-200 outline focus:outline-red-300 focus:outline-2 rounded-md" type="text" id="contact_first" name="first"  placeholder="First Name" onChange={(e)=>{
-                    console.log(e.target.value)
-                }}/>
+                <input className="mb-7 w-[90%] p-2 outline-slate-200 outline focus:outline-red-300 focus:outline-2 rounded-md" type="text" id="contact_name" name="first"  placeholder="First Name" onChange={onChangeTextName}/>
 
-                <input className="mb-7 w-[90%] p-2 outline-slate-200 outline focus:outline-red-300 focus:outline-2 rounded-md" type="text" id="contact_last" name="last"  placeholder="Last Name" onChange={(e)=>{
-                    console.log(e.target.value)
-                }}/>
+                <input className="mb-7 w-[90%] p-2 outline-slate-200 outline focus:outline-red-300 focus:outline-2 rounded-md" type="text" id="contact_email" name="email"  placeholder="Email" onChange={onChangeEmail}/>
 
-                <input className="mb-7 w-[90%] p-2 outline-slate-200 outline focus:outline-red-300 focus:outline-2 rounded-md" type="text" id="contact_email" name="email"  placeholder="Email" onChange={(e)=>{
-                    console.log(e.target.value)
-                }}/>
-
-                <input className="mb-10 w-[90%] p-2 outline-slate-200 outline focus:outline-red-300 focus:outline-2 rounded-md" type="text" id="contact_phone" name="phone"  placeholder="Phone Number" onChange={(e)=>{
-                    console.log(e.target.value)
-                }}/>
+                <input className="mb-10 w-[90%] p-2 outline-slate-200 outline focus:outline-red-300 focus:outline-2 rounded-md" type="text" id="contact_phone" name="phone"  placeholder="Phone Number" onChange={onChangePhoneNumber}/>
 
 
-                <Button pill={true} className='w-[70%] font-bold mb-10' onClick={function(){
-
+                <Button pill={true} className='w-[70%] font-bold mb-10' onClick={function(e){
+                    getData(e,dispatch)
                 }}>
                   <div className='text-lg'>Next</div>
                 </Button>
