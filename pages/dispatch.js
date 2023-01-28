@@ -21,50 +21,12 @@ import {FaArrowDown} from 'react-icons/fa'
 
 
 
-async function find_records(prisma) {
-    const users = await prisma.reviews.findMany()
-    console.log(users)
-    return users
-   }
-  
-  
-  export async function getServerSideProps(){
-  
-    const prisma = new PrismaClient()
-    return find_records(prisma)
-    .then(async (res) => {
-    //   console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n",res)
-      await prisma.$disconnect()
-      return{
-        props:{
-            data:res
-        }
-    }
-      
-    
-
-    })
-    .catch(async (e) => {
-      console.error(e)
-      await prisma.$disconnect()
-
-      return{
-        props:{
-            data:[]
-        }
-    }
-
-     
-    })
-  
-     
-  }
 
 
 
 
 
-export default function Design({data}){
+export default function Design(){
 
   const router = useRouter()
   const {mainState,dispatch}=useContext(Context)

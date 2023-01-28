@@ -38,7 +38,7 @@ export default function GetAddress(){
 
     useEffect(()=>{
 
-       
+      !mainState.service ? router.push("/dispatch") : null
         const handlePlaceSelect=function(){
             let addressObject = autocomplete.getPlace()
             // console.log(addressObject.formatted_address)
@@ -46,8 +46,11 @@ export default function GetAddress(){
           }
 
       var input = document.getElementById('autocomplete');
-      var autocomplete = new window.google.maps.places.Autocomplete(input);
-      autocomplete.addListener("place_changed", handlePlaceSelect)
+      if(mainState.service){
+        var autocomplete = new window.google.maps.places.Autocomplete(input);
+        autocomplete.addListener("place_changed", handlePlaceSelect)
+      }
+      
       
 
     },[])
@@ -76,13 +79,20 @@ export default function GetAddress(){
 
    return(
 
-         <>
-            {/* <Head>
-              <script  defer src="/scripts/initMap.js"></script>
-              <script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoJdqzicSsMRPrMk_OVUoQDaMPeNBi-aU&libraries=places&callback=initMap"></script>
-            </Head>
-            <Script src="/scripts/initMap.js"></Script> */}
+          <>
+            
+            {!mainState.service ?
+             <div>
+             <Head>
+               <script  defer src="/scripts/initMap.js"></script>
+               <script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoJdqzicSsMRPrMk_OVUoQDaMPeNBi-aU&libraries=places&callback=initMap"></script>
+             </Head>
+             <Script src="/scripts/initMap.js"></Script>
+           </div> : null}
+           
 
+           {mainState.service ?
+            <div>
             <div id="navigation" className="w-full h-20 bg-slate-100 sticky top-0 flex justify-center items-center z-10">
               <Image className="h-20 w-48" src={logo}  alt=""/>
             </div>
@@ -158,6 +168,7 @@ export default function GetAddress(){
             
             </div>
 
+            </div>: <div>Progress.....</div>}
 
             
          </>

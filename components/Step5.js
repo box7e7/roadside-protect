@@ -3,7 +3,7 @@ import {Button,Card} from 'flowbite-react'
 import Context from "../components/ContextFile";
 
 
-export default function step5(){
+export default function Step5(){
     const {mainState,dispatch}=useContext(Context)
     return(
         <>

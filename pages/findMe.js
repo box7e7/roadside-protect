@@ -1,6 +1,8 @@
 
 import { useState,useContext,useEffect } from "react";
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+import Script from 'next/script'
 import Context from "../components/ContextFile";
 import Map from "../components/Map";
 import Image from 'next/image'
@@ -41,33 +43,33 @@ function getAddress(region,setTextArea) {
   
 
 
-const geoLoc=(setLoc,setAgent)=>{
-  var options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
+// const geoLoc=(setLoc,setAgent)=>{
+//   var options = {
+//       enableHighAccuracy: true,
+//       timeout: 5000,
+//       maximumAge: 0
+//     };
 
-    const success=(position)=>{
-      setLoc({lat:position.coords.latitude,long:position.coords.longitude})
-      dispatch({type:"LOCATION",location:loc})
-    }
+//     const success=(position)=>{
+//       setLoc({lat:position.coords.latitude,long:position.coords.longitude})
+//       dispatch({type:"LOCATION",location:loc})
+//     }
 
-    const error=(error)=>{
+//     const error=(error)=>{
     
-      alert(`Error code: ${error.code}\nError Message: ${error.message}\nTo enable your location please access to: Settings > Privacy > Location Service > enable it for Browser application`);
+//       alert(`Error code: ${error.code}\nError Message: ${error.message}\nTo enable your location please access to: Settings > Privacy > Location Service > enable it for Browser application`);
     
-    }
+//     }
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success,error,options);
+//     if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition(success,error,options);
       
-  } else {
-      // Make API call to the GeoIP services
-  }
+//   } else {
+//       // Make API call to the GeoIP services
+//   }
   
-  setAgent(window.navigator.userAgentData)
-  }
+//   setAgent(window.navigator.userAgentData)
+//   }
 
 
 
@@ -87,7 +89,8 @@ export default function Design(){
 
   useEffect(()=>{
     mainState.location ? getAddress(mainState.location,setTextArea) : getAddress(loc,setTextArea)
-  },[mainState])
+    !mainState.service ? router.push("/dispatch") : null
+  },[])
 
 
   useEffect(()=>{
@@ -115,82 +118,93 @@ export default function Design(){
   // console.log("////// Text area //////\n",textArea)
    return(
 
-         <div className="h-[100%]">
-            <div id="navigation" className="w-full h-20 bg-slate-100 sticky top-0 flex justify-center items-center z-20 shadow-xl">
-              <Image className="h-20 w-48" src={logo}  alt=""/>
+       <>
+       {!mainState.service ?
+             <div>
+             <Head>
+               <script  defer src="/scripts/initMap.js"></script>
+               <script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoJdqzicSsMRPrMk_OVUoQDaMPeNBi-aU&libraries=places&callback=initMap"></script>
+             </Head>
+             <Script src="/scripts/initMap.js"></Script>
+           </div> : null}
+        {mainState.service ?  
+        <div className="h-[100%]">
+        <div id="navigation" className="w-full h-20 bg-slate-100 sticky top-0 flex justify-center items-center z-20 shadow-xl">
+          <Image className="h-20 w-48" src={logo}  alt=""/>
+        </div>
+        
+        <div   className="flex   items-center flex-col">
+        
+            {/* {loc.lat ? <div className="w-full pb-10 h-3/4"> <Map loc={loc} /> </div> :null} */}
+            <input id="autocomplete" value={textArea.street ? (!textArea.street.includes("Error") ? textArea.street : null) : null }  className="absolute top-24 bg-slate-600 z-10 w-[90%] p-2 rounded-md text-white outline-1 outline-slate-400 bg-opacity-60 placeholder-gray-100 hover:cursor-pointer hover:bg-opacity-75" type="text" placeholder="Enter address here"/>
+            <div className="w-[100%] h-[450px]  overflow-hidden">
+                <div className="w-full  h-full"> 
+                    <Map loc={mainState.location ? mainState.location : loc} textArea={textArea} setVisible={setVisible} /> 
+                </div> 
+            </div>
+        
+            
+
+        </div>
+
+        <div className='bg-gray-100 pb-8 pt-1'>
+          <div className="flex flex-row  justify-center m-10">
+            
+            <div className='relative mx-5 hover:cursor-pointer ' onClick={()=>{
+              router.push("/location")
+              dispatch({type:"SERVICE",service:"Tow"})
+              }}>
+              <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon}/>} />
+            </div>
+          
+            <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+              router.push("/location")
+              dispatch({type:"SERVICE",service:"Tire"})
+              }}>
+              <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon}/>} />
             </div>
             
-            <div   className="flex   items-center flex-col">
-            
-                {/* {loc.lat ? <div className="w-full pb-10 h-3/4"> <Map loc={loc} /> </div> :null} */}
-                <input id="autocomplete" value={textArea.street ? (!textArea.street.includes("Error") ? textArea.street : null) : null }  className="absolute top-24 bg-slate-600 z-10 w-[90%] p-2 rounded-md text-white outline-1 outline-slate-400 bg-opacity-60 placeholder-gray-100 hover:cursor-pointer hover:bg-opacity-75" type="text" placeholder="Enter address here"/>
-                <div className="w-[100%] h-[450px]  overflow-hidden">
-                    <div className="w-full  h-full"> 
-                        <Map loc={mainState.location ? mainState.location : loc} textArea={textArea} setVisible={setVisible} /> 
-                    </div> 
-                </div>
-            
-                
-
+            <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+              router.push("/location")
+              dispatch({type:"SERVICE",service:"Stuck"})
+              }}>
+              <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud}/>} />
             </div>
+          </div>
 
-            <div className='bg-gray-100 pb-8 pt-1'>
-              <div className="flex flex-row  justify-center m-10">
-                
-                <div className='relative mx-5 hover:cursor-pointer ' onClick={()=>{
-                  router.push("/location")
-                  dispatch({type:"SERVICE",service:"Tow"})
-                  }}>
-                  <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon}/>} />
-                </div>
-              
-                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
-                  router.push("/location")
-                  dispatch({type:"SERVICE",service:"Tire"})
-                  }}>
-                  <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon}/>} />
-                </div>
-                
-                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
-                  router.push("/location")
-                  dispatch({type:"SERVICE",service:"Stuck"})
-                  }}>
-                  <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud}/>} />
-                </div>
-              </div>
-
-              <div className="flex flex-row  justify-center m-10">
-                
-                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
-                  router.push("/location")
-                  dispatch({type:"SERVICE",service:"Fuel"})
-                  }}>
-                  <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon}/>} />
-                </div>
-              
-                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
-                    router.push("/location")
-                    dispatch({type:"SERVICE",service:"Battery"})
-                  }}>
-                    <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries}/>} />
-                </div>
-                
-                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
-                  router.push("/location")
-                  dispatch({type:"SERVICE",service:"Unlock"})
-                  }}>
-                  <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon}/>} />
-                </div>
-              
-              </div>
+          <div className="flex flex-row  justify-center m-10">
             
+            <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+              router.push("/location")
+              dispatch({type:"SERVICE",service:"Fuel"})
+              }}>
+              <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon}/>} />
             </div>
-
-            <PopUpQ visible={visible} setVisible={setVisible} className="h-[100%]" />
-
+          
+            <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                router.push("/location")
+                dispatch({type:"SERVICE",service:"Battery"})
+              }}>
+                <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries}/>} />
+            </div>
             
-         </div>
+            <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+              router.push("/location")
+              dispatch({type:"SERVICE",service:"Unlock"})
+              }}>
+              <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon}/>} />
+            </div>
+          
+          </div>
+        
+        </div>
 
+        <PopUpQ visible={visible} setVisible={setVisible} className="h-[100%]" />
+
+        
+        </div>
+      : <div>Progress....</div>}
+       </>
     )
 
 }

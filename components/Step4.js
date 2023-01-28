@@ -91,7 +91,7 @@ export default function Step4(){
                     <div className='text-2xl font-bold'>Contact Information</div>
                 </div>
 
-                <input className="mb-7 w-[90%] p-2 outline-slate-200 outline focus:outline-red-300 focus:outline-2 rounded-md" type="text" id="contact_name" name="first"  placeholder="First Name" onChange={onChangeTextName}/>
+                <input className="mb-7 w-[90%] p-2 outline-slate-200 outline focus:outline-red-300 focus:outline-2 rounded-md" type="text" id="contact_name" name="first"  placeholder="Full Name" onChange={onChangeTextName}/>
 
                 <input className="mb-7 w-[90%] p-2 outline-slate-200 outline focus:outline-red-300 focus:outline-2 rounded-md" type="text" id="contact_email" name="email"  placeholder="Email" onChange={onChangeEmail}/>
 
