@@ -1,17 +1,32 @@
 
-import { useContext,useState } from 'react';
+import { useContext,useState,useEffect } from 'react';
 import {Button} from 'flowbite-react'
-import Progress from './Progress';
+import AlertComponent from "../components/AlertComponent"
 import Context from "./ContextFile"
 
+const alertFunc=()=>{
+    clearTimeout()
+    let btn=document.getElementById("alert0")
+    let pr=document.getElementById("progress0")
+    btn.classList.remove("hidden")
+    pr.classList.remove('progress0')
+    btn.classList.remove("animate-wiggle")
+    setTimeout(()=>{
+        btn.classList.add("animate-wiggle")
+        pr.classList.add('progress0')
+    },100)
 
-const toggleButton=function(e,q){
+}  
+const toggleButton=function(e,q,state,setState){
     let btns=document.getElementsByTagName("button")
         
     for (let i=0;i<btns.length;i++){
         if(btns[i].attributes.name?.value==q){
             if(e.target.attributes.value.value=="yes"){
                 console.log(`${q}: Yes`)
+                let str=`{"${q}":"Yes"}`
+                let obj=JSON.parse(str)
+                setState({...state,...obj})
                 if(btns[i].attributes.value.value=="yes"){
                     btns[i].classList.add("bg-blue-600","text-white")
                 }
@@ -22,6 +37,9 @@ const toggleButton=function(e,q){
             }
             if( e.target.attributes.value.value=="no"){
                 console.log(`${q}: No`)
+                let str=`{"${q}":"No"}`
+                let obj=JSON.parse(str)
+                setState({...state,...obj})
                 if(btns[i].attributes.value.value=="no"){
                     btns[i].classList.add("bg-blue-600","text-white")
                 }
@@ -34,11 +52,23 @@ const toggleButton=function(e,q){
 }
 
 export default  function Step1(){
+    const [state,setState]=useState({q1:null,q2:null,q3:null,q4:null,q5:null})
     const {mainState,dispatch}=useContext(Context)
+
+    useEffect(()=>{
+        let pr=document.getElementById("progress0")
+        pr.addEventListener('animationend', () => {
+        console.log('Animation ended');
+        let btn=document.getElementById("alert0")
+        btn.classList.add("hidden")
+          });
+    },[])
+
     console.log("///// from step1 //////",mainState.service)
+    console.log("///// From step 1 //////",state)
     return (
         <div>
-          
+            <AlertComponent/>
             <div className='flex justify-center items-center flex-col pb-5'>
                 
                 <div className='text-2xl font-bold'>{mainState.service} Questions</div>
@@ -46,39 +76,48 @@ export default  function Step1(){
                 {/* Question 1 */}
                 <div className='pt-10 pb-5'>Has your vehicle been involved in a accident?</div>
                 <div className='flex items-center justify-center space-x-4'>
-                    <button name="q1" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q1")}>Yes</button>
-                    <button name="q1" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q1")}>No</button>
+                    <button name="q1" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q1",state,setState)}>Yes</button>
+                    <button name="q1" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q1",state,setState)}>No</button>
                 </div>
                 {/* Question 2 */}
                 <div className='pt-5 pb-5'>Is your Vehicle leaking fuel?</div>
                 <div className='flex items-center justify-center space-x-4'>
-                    <button name="q2" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q2")}>Yes</button>
-                    <button name="q2" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q2")}>No</button>
+                    <button name="q2" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q2",state,setState)}>Yes</button>
+                    <button name="q2" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q2",state,setState)}>No</button>
                 </div>
                 {/* Question 3 */}
                 <div className='pt-5 pb-5'>Is the vehicle located in a parking garage?</div>
                 <div className='flex items-center justify-center space-x-4'>
-                    <button name="q3" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q3")}>Yes</button>
-                    <button name="q3" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q3")}>No</button>
+                    <button name="q3" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q3",state,setState)}>Yes</button>
+                    <button name="q3" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q3",state,setState)}>No</button>
                 </div>
                 {/* Question 4 */}
                 <div className='pt-5 pb-5'>Is the key with the vehicle?</div>
                 <div className='flex items-center justify-center space-x-4'>
-                    <button name="q4" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q4")}>Yes</button>
-                    <button name="q4" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q4")}>No</button>
+                    <button name="q4" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q4",state,setState)}>Yes</button>
+                    <button name="q4" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q4",state,setState)}>No</button>
                 </div>
                    {/* Question 5 */}
                    <div className='pt-5 pb-5'>Can the vehicle put in neutral?</div>
                 <div className='flex items-center justify-center space-x-4'>
-                    <button name="q5" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q5")}>Yes</button>
-                    <button name="q5" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q5")}>No</button>
+                    <button name="q5" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q5",state,setState)}>Yes</button>
+                    <button name="q5" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q5",state,setState)}>No</button>
                 </div>
 
 
                  {/* Here Next button */}
                 <div className='w-full flex items-center justify-center py-10'>
                     <Button pill={true} className='w-[70%] font-bold' onClick={()=>{
-                         dispatch({type:"STEPS",steps:2})
+                        if(state.q1 && state.q2 && state.q3 && state.q4 && state.q5){
+                          dispatch({type:"STEPS",steps:2})
+                          
+                        }
+                        else{
+                            console.log("//// All question must be answered ////")
+                            alertFunc()
+                            
+                        }
+                        
                     }}>
                         <div className='text-lg'>Next</div>
                     </Button>

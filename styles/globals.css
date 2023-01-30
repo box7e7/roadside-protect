@@ -25,3 +25,22 @@
 .pac-container{
   @apply bg-slate-100 bg-opacity-80 mt-2 rounded-md
 }
+
+
+.progress0 {
+  animation: progress 4s linear 1;
+
+ }
+
+@keyframes progress {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+    
+  }
+}
+
+
+

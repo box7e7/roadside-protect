@@ -11,6 +11,7 @@ import Step3 from './Step3';
 import Step4 from './Step4';
 import Step5 from './Step5';
 import Context from "../components/ContextFile";
+import AlertComponent from './AlertComponent';
 
 
 
@@ -34,7 +35,7 @@ const onClose=()=>{
             <script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoJdqzicSsMRPrMk_OVUoQDaMPeNBi-aU&libraries=places&callback=initMap"></script>
         </Head>
         <Script src="/scripts/initMap.js"></Script>
-       
+        <AlertComponent/>
         <Modal className='h-full  pt-5'
         show={visible}
         size="2xl"

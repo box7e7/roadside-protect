@@ -3,6 +3,8 @@ import { SVgPic } from '../components/SvgPic';
 import { FaPen} from "react-icons/fa";
 import Review from "../components/Reviews";
 import { chunk } from "lodash";
+
+
  
  
  const Indicator_right=function(){
