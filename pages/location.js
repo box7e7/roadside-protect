@@ -66,7 +66,7 @@ export default function Location(){
 
   let elm=document.getElementsByClassName("dispatch-icon")
   for (let i=0;i<elm.length;i++){
-    console.log("$$$$$$$$$$$$$$$$$",elm[i].innerText)
+    // console.log("$$$$$$$$$$$$$$$$$",elm[i].innerText)
     elm[i].classList.remove("bg-gray-400")
     elm[i].classList.add("bg-gray-300")
        
@@ -78,7 +78,7 @@ export default function Location(){
 
  },[mainState])
   
-  console.log("/////// Main state ////////\n",mainState)
+  // console.log("/////// Main state ////////\n",mainState)
    return(
 
          <>
@@ -126,23 +126,22 @@ export default function Location(){
                   router.push("/location")
                   dispatch({type:"SERVICE",service:"Tow"})
                   }}>
-                  <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon}/>} />
+                  <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon} alt="Tow truck"/>} />
                 </div>
               
                 <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                   router.push("/location")
                   dispatch({type:"SERVICE",service:"Tire"})
                   }}>
-                  <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon}/>} />
+                  <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon} alt="Change tire"/>} />
                 </div>
                 
                 <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                   router.push("/location")
                   dispatch({type:"SERVICE",service:"Stuck"})
                   }}>
-                  <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud}/>} />
+                  <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Het Help if Stuck"/> } />
                 </div>
-
               </div>
 
               <div className="flex flex-row  justify-center m-10">
@@ -151,21 +150,21 @@ export default function Location(){
                   router.push("/location")
                   dispatch({type:"SERVICE",service:"Fuel"})
                   }}>
-                  <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon}/>} />
+                  <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon} alt="Fuel delivery"/>} />
                 </div>
               
                 <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                     router.push("/location")
                     dispatch({type:"SERVICE",service:"Battery"})
                   }}>
-                    <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries}/>} />
+                    <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries} alt="Jump start"/>} />
                 </div>
                 
                 <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                   router.push("/location")
                   dispatch({type:"SERVICE",service:"Unlock"})
                   }}>
-                  <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon}/>} />
+                  <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon} alt="Unlock your Car"/>} />
                 </div>
               
               </div>

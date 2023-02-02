@@ -1,8 +1,12 @@
 
 import { useContext,useState,useEffect } from 'react';
 import {Button} from 'flowbite-react'
+import {db,doc,getDoc, collection, getDocs,addDoc,onSnapshot} from "../firebase/firebase"
 import AlertComponent from "../components/AlertComponent"
 import Context from "./ContextFile"
+
+
+
 
 const alertFunc=()=>{
     clearTimeout()
@@ -14,7 +18,7 @@ const alertFunc=()=>{
     setTimeout(()=>{
         btn.classList.add("animate-wiggle")
         pr.classList.add('progress0')
-    },100)
+    },10)
 
 }  
 const toggleButton=function(e,q,state,setState){
@@ -64,11 +68,14 @@ export default  function Step1(){
           });
     },[])
 
+   
+
+
     console.log("///// from step1 //////",mainState.service)
     console.log("///// From step 1 //////",state)
     return (
         <div>
-            <AlertComponent/>
+            
             <div className='flex justify-center items-center flex-col pb-5'>
                 
                 <div className='text-2xl font-bold'>{mainState.service} Questions</div>
@@ -115,6 +122,7 @@ export default  function Step1(){
                         else{
                             console.log("//// All question must be answered ////")
                             alertFunc()
+                            // getMyDocs()
                             
                         }
                         

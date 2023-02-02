@@ -8,10 +8,10 @@ useEffect(()=>{
    if(step>1){
     let li=document.getElementById("progress").getElementsByTagName('li')
     
-    console.log("///// from progress //////",li,step)
+    // console.log("///// from progress //////",li,step)
     for(let i=0;i<step;i++){
-        li[i].classList.remove("bg-slate-400")
-        li[i].classList.add("bg-blue-500")
+        li[i]?.classList.remove("bg-slate-400")
+        li[i]?.classList.add("bg-blue-500")
     }
    }
 

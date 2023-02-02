@@ -18,7 +18,7 @@ import carStuckInMud from "../images/car_stuck_in_mud_1_blue.png"
 import fuelIcon from "../images/fuel-icon_blue.png"
 import iconBatteries from "../images/icon_battery_0.png"
 import unlockIcon from "../images/icon_lockout_0.png"
-import {FaArrowDown} from 'react-icons/fa'
+import GridLoader from "react-spinners/GridLoader";
 
 
 
@@ -168,7 +168,9 @@ export default function GetAddress(){
             
             </div>
 
-            </div>: <div>Progress.....</div>}
+            </div>: <div className="absolute flex items-center justify-center w-full h-full">
+              <GridLoader color="#36d7b7" size={15} />
+            </div>}
 
             
          </>

@@ -30,7 +30,7 @@ export default function Design(){
 
   const router = useRouter()
   const {mainState,dispatch}=useContext(Context)
-  console.log("///// step 1 ///////\n", mainState)
+  // console.log("///// step 1 ///////\n", mainState)
 
    return(
 
@@ -42,13 +42,13 @@ export default function Design(){
             <Script src="/scripts/initMap.js"></Script>
 
             <div id="navigation" className="w-full h-20 bg-slate-100 sticky top-0 flex justify-center items-center z-10">
-              <Image className="h-20 w-48" src={logo}  alt=""/>
+              <Image className="h-20 w-48" src={logo}  alt="logo"/>
             </div>
             
             <div className="flex flex-col justify-center items-center bg-black">
-                <Image className="w-full h-[400px] md:h-[600px] opacity-40" src={bg}  alt=""/> 
+                <Image className="w-full h-[400px] md:h-[600px] opacity-40" src={bg}  alt="bg"/> 
                 {/* enter here your code */}
-                <Image className='absolute top-[120px] w-[65px] h-[50px]' src={clock}/>
+                <Image className='absolute top-[120px] w-[65px] h-[50px]' src={clock} alt="clock" />
                 <h1 className="absolute top-[175px] text-white">FAST HELP</h1>
                 <div className='absolute top-[180px] md:top-[200px] text-center flex flex-col items-center pt-10 ml-1 '>
                   <h1 className="text-white text-3xl mb-4"> SELECT SERVICE TO</h1>
@@ -65,21 +65,21 @@ export default function Design(){
                   router.push("/location")
                   dispatch({type:"SERVICE",service:"Tow"})
                   }}>
-                  <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon}/>} />
+                  <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon} alt="Tow truck"/>} />
                 </div>
               
                 <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                   router.push("/location")
                   dispatch({type:"SERVICE",service:"Tire"})
                   }}>
-                  <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon}/>} />
+                  <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon} alt="Change tire"/>} />
                 </div>
                 
                 <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                   router.push("/location")
                   dispatch({type:"SERVICE",service:"Stuck"})
                   }}>
-                  <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud}/>} />
+                  <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Het Help if Stuck"/> } />
                 </div>
               </div>
 
@@ -89,21 +89,21 @@ export default function Design(){
                   router.push("/location")
                   dispatch({type:"SERVICE",service:"Fuel"})
                   }}>
-                  <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon}/>} />
+                  <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon} alt="Fuel delivery"/>} />
                 </div>
               
                 <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                     router.push("/location")
                     dispatch({type:"SERVICE",service:"Battery"})
                   }}>
-                    <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries}/>} />
+                    <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries} alt="Jump start"/>} />
                 </div>
                 
                 <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                   router.push("/location")
                   dispatch({type:"SERVICE",service:"Unlock"})
                   }}>
-                  <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon}/>} />
+                  <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon} alt="Unlock your Car"/>} />
                 </div>
               
               </div>

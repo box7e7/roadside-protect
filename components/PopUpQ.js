@@ -10,6 +10,7 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
 import Step5 from './Step5';
+import Step6 from './Step6';
 import Context from "../components/ContextFile";
 import AlertComponent from './AlertComponent';
 
@@ -43,10 +44,10 @@ const onClose=()=>{
         position="top-center"
         onClose={onClose}
     >
-      
+        
         {/* <Modal.Header/> */}
         <div className='absolute top-5 pl-5'>
-           <Progress step={mainState.steps}/>
+        {mainState.steps==6 ? null : <Progress step={mainState.steps}/>}
         </div>
         <Modal.Body className='pt-16'>
 
@@ -56,12 +57,13 @@ const onClose=()=>{
         {mainState.steps==3 ? <Step3/> : null}
         {mainState.steps==4 ? <Step4/> : null}
         {mainState.steps==5 ? <Step5/> : null}
+        {mainState.steps==6 ? <Step6/> : null}
         
-      
-       
-       
+        
+        
+        
         </Modal.Body>
-      
+        
         </Modal>
     </>
 

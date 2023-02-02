@@ -16,6 +16,12 @@ const reducerFunction=(state,action)=>{
       return {...state,dropoffAddress: action.dropoffAddress}  
     case 'CUSTOMERINFO':
       return {...state,customerInfo: action.customerInfo}  
+    case 'STRIPEURL':
+      return {...state,stripeURL: action.stripeURL}   
+    case 'INVOICESTATUS':
+      return {...state,invoiceStatus: action.invoiceStatus}
+    case 'INVOICEID':
+      return {...state,invoiceId: action.invoiceId}      
     default:
     return state
    }

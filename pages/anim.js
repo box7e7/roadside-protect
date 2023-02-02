@@ -1,7 +1,9 @@
 
 
-import { useEffect } from "react"
+import { useEffect} from "react"
 import AlertComponent from "../components/AlertComponent"
+import BeatLoader from "react-spinners/BeatLoader";
+
 
 const alertFunc=()=>{
     clearTimeout()
@@ -19,7 +21,6 @@ const alertFunc=()=>{
 
 
 
-
 export default function Anim(){
 
 useEffect(()=>{
@@ -34,11 +35,25 @@ useEffect(()=>{
 
     return(
         
-        <div className="flex items-center justify-center w-full h-full">
+        <div className="flex items-center justify-center  w-full h-full">
             
             <AlertComponent/>
 
-            <button className="w-24 h-12 border-2 rounded-lg hover:bg-blue-500 hover:text-white mt-10" onClick={alertFunc}>Next</button>
+            <div className="flex justify-center items-center mt-10 space-x-3">
+                <button className="w-24 h-12 border-2 rounded-lg hover:bg-blue-500 hover:text-white" onClick={alertFunc}>Next</button>
+                
+            </div>
+
+            {/* <div  className='w-full flex items-center justify-center space-x-3'>
+                <div className='flex items-center space-x-3'>
+                    
+                    <p className="text-slate-700">Please wait redirecting</p>
+                    <BeatLoader color="#9CA3AF" size={15}/>
+
+                </div>
+            </div> */}
+
+
         </div>
     )
 }

@@ -45,7 +45,7 @@ export default function Step3(){
                 
                
                 <div className=' flex items-center justify-center pt-10 w-full pb-10'>
-                   <input type="text" id="autocomplete_dropoff" className="border-2 border-slate-300 w-[85%] rounded-md p-2 outline-0 outline-none text-slate-900 bg-slate-100 bg-opacity-80 hover:bg-opacity-90 placeholder-slate-500 " placeholder='Enter address here' onChange={(e)=>{
+                   <input type="text" id="autocomplete_dropoff" className="border-2 border-slate-300 w-[100%] md:w-[90%] rounded-md p-2 outline-0 outline-none text-slate-900 bg-slate-100 bg-opacity-80 hover:bg-opacity-90 placeholder-slate-500 " placeholder='Enter address here' onChange={(e)=>{
                     // console.log(e.target.value)
                     setEnteredText(e.target.value)
                    }}/>
