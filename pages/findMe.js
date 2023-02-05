@@ -130,7 +130,7 @@ export default function Design(){
            </div> : null}
         {mainState.service ?  
         <div className="h-[100%]">
-        <div id="navigation" className="w-full h-20 bg-slate-100 sticky top-0 flex justify-center items-center z-20 shadow-xl">
+        <div id="navigation" className="w-full h-20 bg-slate-200 sticky top-0 flex justify-center items-center z-20 shadow-xl">
           <Image className="h-20 w-48" src={logo}  alt="logo"/>
         </div>
         
@@ -148,56 +148,65 @@ export default function Design(){
 
         </div>
 
-        <div className='bg-gray-100 pb-8 pt-1'>
-              <div className="flex flex-row  justify-center m-10">
-                
-                <div className='relative mx-5 hover:cursor-pointer ' onClick={()=>{
-                  router.push("/location")
-                  dispatch({type:"SERVICE",service:"Tow"})
-                  }}>
-                  <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon} alt="Tow truck"/>} />
+        {/* Service */}
+        <div className='bg-white h-[450px] flex items-center justify-center pb-10'>
+             
+             <div className='flex flex-col space-y-1'>
+                <div className="flex flex-row  justify-center pb-10">
+                    
+                    <div className='relative mx-5 hover:cursor-pointer ' onClick={()=>{
+                      router.push("/location")
+                      dispatch({type:"SERVICE",service:"Tow"})
+                      }}>
+                      <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon} alt="Tow truck"/>} />
+                    </div>
+                  
+                    <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                      router.push("/location")
+                      dispatch({type:"SERVICE",service:"Tire"})
+                      }}>
+                      <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon} alt="Change tire"/>} />
+                    </div>
+                    
+                    <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                      router.push("/location")
+                      dispatch({type:"SERVICE",service:"Stuck"})
+                      }}>
+                      <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Het Help if Stuck"/> } />
+                    </div>
                 </div>
-              
-                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
-                  router.push("/location")
-                  dispatch({type:"SERVICE",service:"Tire"})
-                  }}>
-                  <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon} alt="Change tire"/>} />
-                </div>
-                
-                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
-                  router.push("/location")
-                  dispatch({type:"SERVICE",service:"Stuck"})
-                  }}>
-                  <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Het Help if Stuck"/> } />
-                </div>
-              </div>
 
-              <div className="flex flex-row  justify-center m-10">
-                
-                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
-                  router.push("/location")
-                  dispatch({type:"SERVICE",service:"Fuel"})
-                  }}>
-                  <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon} alt="Fuel delivery"/>} />
-                </div>
-              
-                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                <div className="flex flex-row  justify-center">
+                  
+                  <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                     router.push("/location")
-                    dispatch({type:"SERVICE",service:"Battery"})
-                  }}>
-                    <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries} alt="Jump start"/>} />
-                </div>
+                    dispatch({type:"SERVICE",service:"Fuel"})
+                    }}>
+                    <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon} alt="Fuel delivery"/>} />
+                  </div>
                 
-                <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
-                  router.push("/location")
-                  dispatch({type:"SERVICE",service:"Unlock"})
-                  }}>
-                  <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon} alt="Unlock your Car"/>} />
+                  <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                      router.push("/location")
+                      dispatch({type:"SERVICE",service:"Battery"})
+                    }}>
+                      <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries} alt="Jump start"/>} />
+                  </div>
+                  
+                  <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                    router.push("/location")
+                    dispatch({type:"SERVICE",service:"Unlock"})
+                    }}>
+                    <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon} alt="Unlock your Car"/>} />
+                  </div>
+                
                 </div>
-              
-              </div>
+             </div>
             
+        </div>
+
+        {/* footer */}
+        <div className="relative bottom-0 bg-slate-200 text-slate-600 w-full h-20  flex items-center justify-center">
+        <h1>All rights reserved 2023</h1>
         </div>
 
         <PopUpQ visible={visible} setVisible={setVisible} className="h-[100%]" />

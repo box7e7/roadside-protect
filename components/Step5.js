@@ -5,18 +5,20 @@ import {db,doc,getDoc, collection, getDocs,addDoc,onSnapshot} from "../firebase/
 
 
 const dispatchJob=async function(mainState,dispatch){
+    
+    let obj={
+        date:Date(),
+        email:mainState.customerInfo.email,
+        items:[{amount:10000,currency:'usd',description:mainState.service}],
+        service:{
+            address:mainState.address,
+            contactInfo:{name:mainState.customerInfo.fullName,email:mainState.customerInfo.email,phone:mainState.customerInfo.phone},
+            destinationAddress:mainState.service=="Tow" ? mainState.dropoffAddress: null,
+            serviceType:mainState.service,
+            vehicleInformation:{make:mainState.vehicle.make,model:mainState.vehicle.model,color:mainState.vehicle.color,year:mainState.vehicle.year}
+        }}
 
-   const docRef = await addDoc(collection(db, "invoices"), {
-    date:Date(),
-    email:mainState.customerInfo.email,
-    items:[{amount:10000,currency:'usd',description:mainState.service}],
-    service:{
-        address:mainState.address,
-        contactInfo:{name:mainState.customerInfo.fullName,email:mainState.customerInfo.email,phone:mainState.customerInfo.phone},
-        destinationAddress:mainState.dropoffAddress,
-        serviceType:mainState.service,
-        vehicleInformation:{make:mainState.vehicle.make,model:mainState.vehicle.model,color:mainState.vehicle.color,year:mainState.vehicle.year}
-    }});
+   const docRef = await addDoc(collection(db, "invoices"), obj);
       console.log("Document written with ID: ", docRef.id);
 
       const unsub = onSnapshot(doc(db, "invoices", docRef.id), (doc) => {
@@ -29,7 +31,7 @@ const dispatchJob=async function(mainState,dispatch){
 
 
 export default function Step5(){
-    const {mainState,dispatch}=useContext(Context)
+    const {mainState,dispatch}=useContext(Context) 
    
 
     useEffect(()=>{
@@ -61,8 +63,13 @@ export default function Step5(){
             <div className='border-2 border-slate-200 w-full py-2 text-center bg-slate-400 text-white rounded-md font-bold'>Location</div>
             <div className='mt-1 p-3 text-slate-700'>{`${mainState.address} Service`}</div>
 
-            <div className='border-2 border-slate-200 w-full py-2 text-center bg-slate-400 text-white rounded-md font-bold'>Drop off</div>
-            <div className='mt-1 p-3 text-slate-700'>{`${mainState.dropoffAddress} Service`}</div>
+            {mainState.service=="Tow" ?
+            <>
+                <div className='border-2 border-slate-200 w-full py-2 text-center bg-slate-400 text-white rounded-md font-bold'>Drop off</div>
+                <div className='mt-1 p-3 text-slate-700'>{`${mainState.dropoffAddress} Service`}</div>
+            </>
+            :
+            null}
 
             <div className='border-2 border-slate-200 w-full py-2 text-center bg-slate-400 text-white rounded-md font-bold'>Contact</div>
             <div className='mt-1 p-3 text-slate-700'>

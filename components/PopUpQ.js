@@ -47,14 +47,14 @@ const onClose=()=>{
         
         {/* <Modal.Header/> */}
         <div className='absolute top-5 pl-5'>
-        {mainState.steps==6 ? null : <Progress step={mainState.steps}/>}
+        {mainState.steps==6 ? null : <Progress step={mainState.steps} service={mainState.service} dispatch={dispatch}/>}
         </div>
         <Modal.Body className='pt-16'>
 
 
         {mainState.steps==1 ? <Step1/> : null}
         {mainState.steps==2 ? <Step2/> : null}
-        {mainState.steps==3 ? <Step3/> : null}
+        {(mainState.steps==3 && mainState.service=="Tow") ? <Step3/> : null}
         {mainState.steps==4 ? <Step4/> : null}
         {mainState.steps==5 ? <Step5/> : null}
         {mainState.steps==6 ? <Step6/> : null}

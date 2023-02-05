@@ -53,6 +53,10 @@ useEffect(()=>{
                 </div>
             </div> */}
 
+            <div className=" absolute bottom-0 bg-black text-white w-full h-16  flex items-center justify-center">
+            <h1>Footer</h1>
+            </div>
+
 
         </div>
     )

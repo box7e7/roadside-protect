@@ -58,7 +58,7 @@ export default function Step2(){
                 }
                 else{
                     dispatch({type:"VEHICLE",vehicle:{make:arr1[0],model:arr1[1],color:arr1[2],year:arr1[3]}})
-                    dispatch({type:"STEPS",steps:3})
+                    mainState.service=="Tow" ? dispatch({type:"STEPS",steps:3}) : dispatch({type:"STEPS",steps:4})
                 }
                 
                 }}>
