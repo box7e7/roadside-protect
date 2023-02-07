@@ -109,6 +109,8 @@ export default function GetAddress(){
                   dispatch({type:"ADDRESS",address:address.address})
                   dispatch({type:"STEPS",steps:1})
                   setVisible(true)
+                  document.body.style.overflow = 'hidden'
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}>Confirm address</div> : null}
 
                 {/* above your code */}

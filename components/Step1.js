@@ -1,6 +1,7 @@
 
 import { useContext,useState,useEffect } from 'react';
 import {Button} from 'flowbite-react'
+import MyListBox from './MyListBox';
 import {db,doc,getDoc, collection, getDocs,addDoc,onSnapshot} from "../firebase/firebase"
 import AlertComponent from "../components/AlertComponent"
 import Context from "./ContextFile"
@@ -76,7 +77,8 @@ export default  function Step1(){
     return (
         <div>
             
-            <div className='flex justify-center items-center flex-col pb-5'>
+            <div>
+                <div className='flex justify-center items-center flex-col pb-5 w-[100%]'>
                 
                 <div className='text-2xl font-bold'>{mainState.service} Questions</div>
 
@@ -104,16 +106,31 @@ export default  function Step1(){
                     <button name="q4" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q4",state,setState)}>Yes</button>
                     <button name="q4" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q4",state,setState)}>No</button>
                 </div>
-                   {/* Question 5 */}
-                   <div className='pt-5 pb-5'>Can the vehicle put in neutral?</div>
+                {/* Question 5 */}
+                <div className='pt-5 pb-5'>Can the vehicle put in neutral?</div>
                 <div className='flex items-center justify-center space-x-4'>
                     <button name="q5" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q5",state,setState)}>Yes</button>
                     <button name="q5" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q5",state,setState)}>No</button>
                 </div>
 
+                </div>
 
-                 {/* Here Next button */}
-                <div className='w-full flex items-center justify-center py-10'>
+                <div className='pt-3'>
+                    <MyListBox/>
+                </div>
+
+            
+                <div className='pt-3'>
+                    <label  for="message" className="m-2">Add special notes or instructions</label>
+                    <div className=" flex flex-col justify-center  items-center w-full">
+                        
+                        <textarea  id="textArea" onChange={()=>{}} className="w-[100%] h-[100px] m-2 border border-slate-300 focus:outline-slate-300 focus:outline-2 bg-slate-100 rounded-md text-gray-700" placeholder=""></textarea>
+                    </div>
+                </div>
+            </div>
+
+             {/* Here Next button */}
+             <div className='w-full flex items-center justify-center py-10'>
                     <Button pill={true} className='w-[70%] font-bold' onClick={()=>{
                         if(state.q1 && state.q2 && state.q3 && state.q4 && state.q5){
                           dispatch({type:"STEPS",steps:2})
@@ -129,12 +146,9 @@ export default  function Step1(){
                     }}>
                         <div className='text-lg'>Next</div>
                     </Button>
-                </div>
+            </div>
                 {/* Above Next Button */}
             
-            
-            
-            </div>
       
         </div>
     )

@@ -29,7 +29,7 @@ const onClose=()=>{
 
     return(
    
-    <>
+    <div>
         
         <Head>
             <script  defer src="/scripts/initMap.js"></script>
@@ -65,7 +65,7 @@ const onClose=()=>{
         </Modal.Body>
         
         </Modal>
-    </>
+    </div>
 
 
   

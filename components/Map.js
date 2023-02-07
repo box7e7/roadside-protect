@@ -20,6 +20,8 @@ const AnyReactComponent = ({ loc,dispatch,textArea,setVisible }) => {
                     dispatch({type:"ADDRESS",address:textArea.street})
                     dispatch({type:"STEPS",steps:1})
                     setVisible(true)
+                    document.body.style.overflow = 'hidden'
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     // router.push("/dispatch")
 
                 }}>

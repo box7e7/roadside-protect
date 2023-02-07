@@ -1,13 +1,16 @@
 
-import { useEffect } from "react"
+import { useEffect,useRef } from "react"
 
 export default function Progress({step,service,dispatch}){
+
+    const progressRef = useRef(null);
 
 useEffect(()=>{
 
    
-   if(step>1){
-    let li=document.getElementById("progress").getElementsByTagName('li')
+//    if(step>1){
+    // let li=document.getElementById("progress")?.getElementsByTagName('li')
+    let li=progressRef.current.getElementsByTagName('li')
     // console.log("///// from progress //////",li,step)
     if(service=="Tow"){
         for(let i=0;i<step;i++){
@@ -31,7 +34,7 @@ useEffect(()=>{
         }
 
 
-    }
+    // }
     
    }
 
@@ -41,11 +44,11 @@ useEffect(()=>{
 
     return(
         <>
-        <ul id="progress" className="flex space-x-1">
+        <ul id="progress" ref={progressRef} className="flex space-x-1">
             
             {service=="Tow" ?
             <>
-                <li className="rounded-full bg-blue-500   w-5 h-5" onClick={()=>{
+                <li className="rounded-full bg-blue-500   w-5 h-5 hover:cursor-pointer" onClick={()=>{
                    if(step>=1){
                     dispatch({type:"STEPS",steps:1})
                     let li=document.getElementById("progress").getElementsByTagName('li')
@@ -55,7 +58,7 @@ useEffect(()=>{
                     }
                    }
                 }}></li>
-                <li className="rounded-full bg-slate-400  w-5 h-5" onClick={()=>{
+                <li className="rounded-full bg-slate-400  w-5 h-5 hover:cursor-pointer" onClick={()=>{
                     if(step>=2){
                         dispatch({type:"STEPS",steps:2})
                         let li=document.getElementById("progress").getElementsByTagName('li')
@@ -65,7 +68,7 @@ useEffect(()=>{
                         }
                     }
                 }}></li>
-                <li className="rounded-full bg-slate-400  w-5 h-5" onClick={()=>{
+                <li className="rounded-full bg-slate-400  w-5 h-5 hover:cursor-pointer" onClick={()=>{
                     if(step>=3){
                         dispatch({type:"STEPS",steps:3})
                         let li=document.getElementById("progress").getElementsByTagName('li')
@@ -75,7 +78,7 @@ useEffect(()=>{
                         }
                     }
                 }}></li>
-                <li className="rounded-full bg-slate-400  w-5 h-5" onClick={()=>{
+                <li className="rounded-full bg-slate-400  w-5 h-5 hover:cursor-pointer" onClick={()=>{
                     if(step>=4){
                         dispatch({type:"STEPS",steps:4})
                         let li=document.getElementById("progress").getElementsByTagName('li')
@@ -85,7 +88,7 @@ useEffect(()=>{
                         }
                     }
                 }}></li>
-                <li className="rounded-full bg-slate-400  w-5 h-5" onClick={()=>{
+                <li className="rounded-full bg-slate-400  w-5 h-5 hover:cursor-pointer" onClick={()=>{
                    if(step>=5){
                     dispatch({type:"STEPS",steps:5})
                    }
@@ -95,7 +98,7 @@ useEffect(()=>{
             :
             
             <>
-                <li className="rounded-full bg-blue-500  w-5 h-5"onClick={()=>{
+                <li className="rounded-full bg-blue-500  w-5 h-5 hover:cursor-pointer" onClick={()=>{
                     if(step>=1){
                         dispatch({type:"STEPS",steps:1})
                         let li=document.getElementById("progress").getElementsByTagName('li')
@@ -105,7 +108,7 @@ useEffect(()=>{
                     }
                     }
                 }}></li>
-                <li className="rounded-full bg-slate-400  w-5 h-5" onClick={()=>{
+                <li className="rounded-full bg-slate-400  w-5 h-5 hover:cursor-pointer" onClick={()=>{
                     if(step>=2){
                         dispatch({type:"STEPS",steps:2})
                         let li=document.getElementById("progress").getElementsByTagName('li')
@@ -115,7 +118,7 @@ useEffect(()=>{
                     }
                     }
                 }}></li>
-                <li className="rounded-full bg-slate-400  w-5 h-5" onClick={()=>{
+                <li className="rounded-full bg-slate-400  w-5 h-5 hover:cursor-pointer" onClick={()=>{
                     if(step>=4){
                         dispatch({type:"STEPS",steps:4})
                         let li=document.getElementById("progress").getElementsByTagName('li')
@@ -125,7 +128,7 @@ useEffect(()=>{
                     }
                     }
                 }}></li>
-                <li className="rounded-full bg-slate-400  w-5 h-5" onClick={()=>{
+                <li className="rounded-full bg-slate-400  w-5 h-5 hover:cursor-pointer" onClick={()=>{
                     if(step>=5){
                         dispatch({type:"STEPS",steps:5})
                         let li=document.getElementById("progress").getElementsByTagName('li')
