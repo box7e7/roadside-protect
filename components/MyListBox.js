@@ -83,8 +83,8 @@ const SelectBox=({selected,setSelected,arrayObj})=>{
     )
 }
 
-export default function MyListBox() {
-  const [selected, setSelected] = useState("Select your location type")
+export default function MyListBox({selected,setSelected}) {
+  
  
 
 

@@ -58,6 +58,7 @@ const toggleButton=function(e,q,state,setState){
 
 export default  function Step1(){
     const [state,setState]=useState({q1:null,q2:null,q3:null,q4:null,q5:null})
+    const [selected, setSelected] = useState("Select your location type")
     const {mainState,dispatch}=useContext(Context)
 
     useEffect(()=>{
@@ -74,6 +75,7 @@ export default  function Step1(){
 
     console.log("///// from step1 //////",mainState.service)
     console.log("///// From step 1 //////",state)
+    console.log("///// From step 1 selected //////",selected)
     return (
         <div>
             
@@ -116,7 +118,7 @@ export default  function Step1(){
                 </div>
 
                 <div className='pt-3'>
-                    <MyListBox/>
+                    <MyListBox selected={selected} setSelected={setSelected}/>
                 </div>
 
             
@@ -132,7 +134,7 @@ export default  function Step1(){
              {/* Here Next button */}
              <div className='w-full flex items-center justify-center py-10'>
                     <Button pill={true} className='w-[70%] font-bold' onClick={()=>{
-                        if(state.q1 && state.q2 && state.q3 && state.q4 && state.q5){
+                        if(state.q1 && state.q2 && state.q3 && state.q4 && state.q5 && !selected.includes("Select")){
                           dispatch({type:"STEPS",steps:2})
                           
                         }
