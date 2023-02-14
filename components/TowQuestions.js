@@ -54,7 +54,7 @@ const toggleButton=function(e,q,state,setState){
 }
 
 export default  function TowQuestions(){
-    const [state,setState]=useState({q1:null,q2:null,q3:null,q4:null,q5:null})
+    const [state,setState]=useState({q1:null,q2:null,q3:null,q4:null,q5:null,q6:null})
     const [selected, setSelected] = useState("Select your location type")
     const {mainState,dispatch}=useContext(Context)
 
@@ -88,28 +88,34 @@ export default  function TowQuestions(){
                     <button name="q1" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q1",state,setState)}>No</button>
                 </div>
                 {/* Question 2 */}
-                <div className='pt-5 pb-5'>Is your Vehicle leaking fuel?</div>
+                <div className='pt-5 pb-5'>Is the axle broken?</div>
                 <div className='flex items-center justify-center space-x-4'>
                     <button name="q2" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q2",state,setState)}>Yes</button>
                     <button name="q2" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q2",state,setState)}>No</button>
                 </div>
                 {/* Question 3 */}
-                <div className='pt-5 pb-5'>Is the vehicle located in a parking garage?</div>
+                <div className='pt-5 pb-5'>Are all wheels intact?</div>
                 <div className='flex items-center justify-center space-x-4'>
                     <button name="q3" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q3",state,setState)}>Yes</button>
                     <button name="q3" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q3",state,setState)}>No</button>
                 </div>
                 {/* Question 4 */}
-                <div className='pt-5 pb-5'>Is the key with the vehicle?</div>
+                <div className='pt-5 pb-5'>Is the vehicle unattended?</div>
                 <div className='flex items-center justify-center space-x-4'>
                     <button name="q4" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q4",state,setState)}>Yes</button>
                     <button name="q4" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q4",state,setState)}>No</button>
                 </div>
                 {/* Question 5 */}
-                <div className='pt-5 pb-5'>Can the vehicle put in neutral?</div>
+                <div className='pt-5 pb-5'>Is the key with the vehicle?</div>
                 <div className='flex items-center justify-center space-x-4'>
                     <button name="q5" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q5",state,setState)}>Yes</button>
                     <button name="q5" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q5",state,setState)}>No</button>
+                </div>
+                {/* Question 6 */}
+                <div className='pt-5 pb-5'>Can the vehicle put in neutral?</div>
+                <div className='flex items-center justify-center space-x-4'>
+                    <button name="q6" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q6",state,setState)}>Yes</button>
+                    <button name="q6" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q6",state,setState)}>No</button>
                 </div>
 
                 </div>
@@ -131,7 +137,7 @@ export default  function TowQuestions(){
              {/* Here Next button */}
              <div className='w-full flex items-center justify-center py-10'>
                     <Button pill={true} className='w-[70%] font-bold' onClick={()=>{
-                        if(state.q1 && state.q2 && state.q3 && state.q4 && state.q5 && !selected.includes("Select")){
+                        if(state.q1 && state.q2 && state.q3 && state.q4 && state.q5 && state.q6 && !selected.includes("Select")){
                           dispatch({type:"STEPS",steps:2})
                           
                         }
