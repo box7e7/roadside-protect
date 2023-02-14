@@ -170,9 +170,9 @@ export default function Design(){
                     
                     <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                       router.push("/location")
-                      dispatch({type:"SERVICE",service:"Stuck"})
+                      dispatch({type:"SERVICE",service:"Winch out"})
                       }}>
-                      <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Het Help if Stuck"/> } />
+                      <IconComponent text="Winch out" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Winch out"/> } />
                     </div>
                 </div>
 
