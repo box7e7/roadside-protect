@@ -117,7 +117,7 @@ export default function Step3(){
                     </div>
                 
                     {/* Question 2 */}
-                    <div className='pt-5 pb-5'>In the Drop off location, do they have night drop off box for keys?</div>
+                    <div className='pt-5 pb-5'>At the Drop off location, do they have night drop off box for keys?</div>
                     <div className='flex items-center justify-center space-x-4 pb-10'>
                         <button name="q2" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q2",state,setState)}>Yes</button>
                         <button name="q2" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q2",state,setState)}>No</button>

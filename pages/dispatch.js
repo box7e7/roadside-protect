@@ -63,28 +63,28 @@ export default function Design(){
             {/* Service */}
             <div className='bg-white h-[450px] flex items-center justify-center pb-10'>
              
-             <div className='flex flex-col space-y-1'>
+             <div className='flex flex-col space-y-3'>
                 <div className="flex flex-row  justify-center pb-10">
                     
                     <div className='relative mx-5 hover:cursor-pointer ' onClick={()=>{
                       router.push("/location")
                       dispatch({type:"SERVICE",service:"Tow"})
                       }}>
-                      <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon} alt="Tow truck"/>} />
+                      <IconComponent text="Tow Service" icon={<Image className='p-3' src={towTruckIcon} alt="Tow truck"/>} />
                     </div>
                   
                     <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                       router.push("/location")
                       dispatch({type:"SERVICE",service:"Tire"})
                       }}>
-                      <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon} alt="Change tire"/>} />
+                      <IconComponent text="Tire Change" icon={<Image className='p-3' src={flatTireIcon} alt="Change tire"/>} />
                     </div>
                     
                     <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                       router.push("/location")
                       dispatch({type:"SERVICE",service:"Winch out"})
                       }}>
-                      <IconComponent text="Winch out" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Winch out"/> } />
+                      <IconComponent text="Winch Out" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Winch out"/> } />
                     </div>
                 </div>
 
@@ -94,21 +94,21 @@ export default function Design(){
                     router.push("/location")
                     dispatch({type:"SERVICE",service:"Fuel"})
                     }}>
-                    <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon} alt="Fuel delivery"/>} />
+                    <IconComponent text="Fuel Delivery" icon={<Image className='p-3' src={fuelIcon} alt="Fuel delivery"/>} />
                   </div>
                 
                   <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                       router.push("/location")
                       dispatch({type:"SERVICE",service:"Battery"})
                     }}>
-                      <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries} alt="Jump start"/>} />
+                      <IconComponent text="Jump Start" icon={<Image className='p-3' src={iconBatteries} alt="Jump start"/>} />
                   </div>
                   
                   <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                     router.push("/location")
                     dispatch({type:"SERVICE",service:"Unlock"})
                     }}>
-                    <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon} alt="Unlock your Car"/>} />
+                    <IconComponent text="Lock Out" icon={<Image className='p-3' src={unlockIcon} alt="Unlock your Car"/>} />
                   </div>
                 
                 </div>
