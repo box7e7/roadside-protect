@@ -164,7 +164,7 @@ export default function Location(){
                       router.push("/location")
                       dispatch({type:"SERVICE",service:"Battery"})
                     }}>
-                      <IconComponent text="Jump start" icon={<Image className='p-3' src={iconBatteries} alt="Jump start"/>} />
+                      <IconComponent text="Jump Start" icon={<Image className='p-3' src={iconBatteries} alt="Jump start"/>} />
                   </div>
                   
                   <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
