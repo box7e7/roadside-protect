@@ -129,11 +129,11 @@ export default  function TiresQuestions(){
                                 dispatch({type:"STEPS",steps:2})
                                 console.log("//// next step //////")
                                   }
-                                else{
-                                    console.log("//// All question must be answered ////")
-                                    alertFunc()
-                                    
-                                    }
+                            else{
+                                console.log("//// All question must be answered ////")
+                                alertFunc()
+                                
+                                }
 
                         }
          

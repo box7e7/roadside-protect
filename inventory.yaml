@@ -1,0 +1,4 @@
+[targets]
+
+#localhost              ansible_connection=local
+dallas.mehdi.cloud     ansible_connection=ssh        ansible_user=root
