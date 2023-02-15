@@ -81,28 +81,32 @@ export default function Step4(){
     const {mainState,dispatch}=useContext(Context)
 
     // console.log(mainState)
-    if(mainState.service=="Tow Service"){
+    
       useEffect(()=>{
-        const source = mainState.address;
-        const destination = mainState.dropoffAddress;
-        // const host='http://localhost:3000'
-        const host='https://dallas.mehdi.cloud'
-        fetch(`${host}/api/getDistance?source=${source}&destination=${destination}`).then(res=>{
-          res.json().then(body=>{
-            if(body.distance){
-              console.log("//// From step 4 /////",body.distance)
-              dispatch({type:"DISTANCE",distance:body.distance})
-            }
-            else if(body.error){
-              console.log("//// From step 4 error message /////",body.error)
-            }
-            else{
-              console.log("/////  unknown error ///// ")
-            }
+
+        if(mainState.service=="Tow Service"){
+          const source = mainState.address;
+          const destination = mainState.dropoffAddress;
+          // const host='http://localhost:3000'
+          const host='https://dallas.mehdi.cloud'
+          fetch(`${host}/api/getDistance?source=${source}&destination=${destination}`).then(res=>{
+            res.json().then(body=>{
+              if(body.distance){
+                console.log("//// From step 4 /////",body.distance)
+                dispatch({type:"DISTANCE",distance:body.distance})
+              }
+              else if(body.error){
+                console.log("//// From step 4 error message /////",body.error)
+              }
+              else{
+                console.log("/////  unknown error ///// ")
+              }
+            })
           })
-        })
+        }
+       
       },[])
-    }
+   
     
 
     return(
