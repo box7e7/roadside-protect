@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Script from 'next/script'
 
+
 import { PrismaClient } from '@prisma/client'
 import bg from "../images/blue_bg1.png"
 import logo from "../images/logo_momentum.png"
@@ -61,6 +62,9 @@ export default function Location(){
   const [agent,setAgent]=useState(null)
   const {mainState,dispatch}=useContext(Context)
   const router = useRouter()
+
+
+  
 
  useEffect(()=>{
 

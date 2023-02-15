@@ -21,7 +21,9 @@ const reducerFunction=(state,action)=>{
     case 'INVOICESTATUS':
       return {...state,invoiceStatus: action.invoiceStatus}
     case 'INVOICEID':
-      return {...state,invoiceId: action.invoiceId}      
+      return {...state,invoiceId: action.invoiceId}  
+    case 'DISTANCE':
+      return {...state,distance: action.distance}       
     default:
     return state
    }

@@ -4,12 +4,12 @@ import Context from "../components/ContextFile";
 import {db,doc,getDoc, collection, getDocs,addDoc,onSnapshot} from "../firebase/firebase"
 
 
-const dispatchJob=async function(mainState,dispatch){
+const dispatchJob=async function(mainState,dispatch,total){
     
     let obj={
         date:Date(),
         email:mainState.customerInfo.email,
-        items:[{amount:10000,currency:'usd',description:mainState.service}],
+        items:[{amount:total*100,currency:'usd',description:mainState.service}],
         service:{
             address:mainState.address,
             contactInfo:{name:mainState.customerInfo.fullName,email:mainState.customerInfo.email,phone:mainState.customerInfo.phone},
@@ -31,6 +31,8 @@ const dispatchJob=async function(mainState,dispatch){
 
 
 export default function Step5(){
+
+    const [total,setTotal]=useState(0)
     const {mainState,dispatch}=useContext(Context) 
    
 
@@ -43,6 +45,8 @@ export default function Step5(){
             serviceType:mainState.service,
             vehicleInformation:{make:mainState.vehicle.make,model:mainState.vehicle.model,color:mainState.vehicle.color,year:mainState.vehicle.year}
         }})
+
+        mainState.distance ? setTotal(Math.ceil(75+(mainState.distance-5)*3.5)) : setTotal(75)
        
     },[])
 
@@ -54,7 +58,7 @@ export default function Step5(){
             <div className='flex justify-center items-center flex-col pb-10'>
                 {/* <Image className="h-36 w-48 mb-10" src={car}  alt=""/> */}
                 <div className='text-2xl font-bold'>GET HELP NOW</div>
-                <div className='text-[#11A9C9] text-4xl  font-bold font-serif '>$100</div>
+                <div className='text-[#11A9C9] text-4xl  font-bold font-serif '>${total.toFixed(2)}</div>
             </div>
 
             <div className='border-2 border-slate-200 w-full py-2 text-center bg-slate-400 text-white rounded-md font-bold'>Requested Job</div>
@@ -80,7 +84,7 @@ export default function Step5(){
 
             <div className='w-full flex items-center justify-center py-10'>
                     <Button pill={true} className='w-[70%] font-bold' onClick={()=>{
-                        dispatchJob(mainState,dispatch)
+                        dispatchJob(mainState,dispatch,total)
                         dispatch({type:"STEPS",steps:6})
                         
                     }}>

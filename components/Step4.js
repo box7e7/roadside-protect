@@ -1,6 +1,6 @@
 
 import validator from 'validator'
-import {useContext} from 'react'
+import {useContext,useEffect} from 'react'
 import {Button} from 'flowbite-react'
 import Context from "../components/ContextFile";
 
@@ -81,6 +81,24 @@ export default function Step4(){
     const {mainState,dispatch}=useContext(Context)
 
     // console.log(mainState)
+    useEffect(()=>{
+      const source = mainState.address;
+      const destination = mainState.dropoffAddress;
+      fetch(`http://localhost:3000/api/getDistance?source=${source}&destination=${destination}`).then(res=>{
+        res.json().then(body=>{
+          if(body.distance){
+            console.log("//// From step 4 /////",body.distance)
+            dispatch({type:"DISTANCE",distance:body.distance})
+          }
+          else if(body.error){
+            console.log("//// From step 4 error message /////",body.error)
+          }
+          else{
+            console.log("/////  unknown error ///// ")
+          }
+        })
+      })
+    },[])
 
     return(
         <>
