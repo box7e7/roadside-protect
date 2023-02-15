@@ -26,12 +26,12 @@ export default  function Step1(){
    
     return (
         <div>
-            {mainState.service=="Tow" ? <TowQuestions/> : null}
-            {mainState.service=="Tire" ? <TiresQuestions/> : null}
-            {mainState.service=="Winch out" ?< WinchOutQuestions/> : null}
-            {mainState.service=="Fuel" ? <FuelQuestions/> : null}
-            {mainState.service=="Battery" ? <BatteryQuestions/> : null}
-            {mainState.service=="Unlock" ? <UnlockQuestions/> : null}
+            {mainState.service=="Tow Service" ? <TowQuestions/> : null}
+            {mainState.service=="Tire Change" ? <TiresQuestions/> : null}
+            {mainState.service=="Winch Out" ?< WinchOutQuestions/> : null}
+            {mainState.service=="Fuel Delivery" ? <FuelQuestions/> : null}
+            {mainState.service=="Jump Start" ? <BatteryQuestions/> : null}
+            {mainState.service=="Lock out" ? <UnlockQuestions/> : null}
 
         </div>
     )

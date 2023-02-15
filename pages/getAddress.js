@@ -121,28 +121,28 @@ export default function GetAddress(){
             {/* Service */}
             <div className='bg-white h-[450px] flex items-center justify-center pb-10'>
              
-             <div className='flex flex-col space-y-1'>
+             <div className='flex flex-col space-y-3'>
                 <div className="flex flex-row  justify-center pb-10">
                     
                     <div className='relative mx-5 hover:cursor-pointer ' onClick={()=>{
                       router.push("/location")
-                      dispatch({type:"SERVICE",service:"Tow"})
+                      dispatch({type:"SERVICE",service:"Tow Service"})
                       }}>
-                      <IconComponent text="Tow" icon={<Image className='p-3' src={towTruckIcon} alt="Tow truck"/>} />
+                      <IconComponent text="Tow Service" icon={<Image className='p-3' src={towTruckIcon} alt="Tow truck"/>} />
                     </div>
                   
                     <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                       router.push("/location")
-                      dispatch({type:"SERVICE",service:"Tire"})
+                      dispatch({type:"SERVICE",service:"Tire Change"})
                       }}>
-                      <IconComponent text="Tire" icon={<Image className='p-3' src={flatTireIcon} alt="Change tire"/>} />
+                      <IconComponent text="Tire Change" icon={<Image className='p-3' src={flatTireIcon} alt="Change tire"/>} />
                     </div>
                     
                     <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                       router.push("/location")
-                      dispatch({type:"SERVICE",service:"Stuck"})
+                      dispatch({type:"SERVICE",service:"Winch Out"})
                       }}>
-                      <IconComponent text="Stuck" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Het Help if Stuck"/> } />
+                      <IconComponent text="Winch Out" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Winch out"/> } />
                     </div>
                 </div>
 
@@ -150,23 +150,23 @@ export default function GetAddress(){
                   
                   <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                     router.push("/location")
-                    dispatch({type:"SERVICE",service:"Fuel"})
+                    dispatch({type:"SERVICE",service:"Fuel Delivery"})
                     }}>
-                    <IconComponent text="Fuel" icon={<Image className='p-3' src={fuelIcon} alt="Fuel delivery"/>} />
+                    <IconComponent text="Fuel Delivery" icon={<Image className='p-3' src={fuelIcon} alt="Fuel delivery"/>} />
                   </div>
                 
                   <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                       router.push("/location")
-                      dispatch({type:"SERVICE",service:"Battery"})
+                      dispatch({type:"SERVICE",service:"Jump Start"})
                     }}>
-                      <IconComponent text="Battery" icon={<Image className='p-3' src={iconBatteries} alt="Jump start"/>} />
+                      <IconComponent text="Jump Start" icon={<Image className='p-3' src={iconBatteries} alt="Jump start"/>} />
                   </div>
                   
                   <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                     router.push("/location")
-                    dispatch({type:"SERVICE",service:"Unlock"})
+                    dispatch({type:"SERVICE",service:"Lock Out"})
                     }}>
-                    <IconComponent text="Unlock" icon={<Image className='p-3' src={unlockIcon} alt="Unlock your Car"/>} />
+                    <IconComponent text="Lock Out" icon={<Image className='p-3' src={unlockIcon} alt="Unlock your Car"/>} />
                   </div>
                 
                 </div>

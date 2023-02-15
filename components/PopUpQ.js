@@ -54,7 +54,7 @@ const onClose=()=>{
 
         {mainState.steps==1 ? <Step1/> : null}
         {mainState.steps==2 ? <Step2/> : null}
-        {(mainState.steps==3 && mainState.service=="Tow") ? <Step3/> : null}
+        {(mainState.steps==3 && mainState.service=="Tow Service") ? <Step3/> : null}
         {mainState.steps==4 ? <Step4/> : null}
         {mainState.steps==5 ? <Step5/> : null}
         {mainState.steps==6 ? <Step6/> : null}

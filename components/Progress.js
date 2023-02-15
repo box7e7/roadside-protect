@@ -46,7 +46,7 @@ useEffect(()=>{
         <>
         <ul id="progress" ref={progressRef} className="flex space-x-1">
             
-            {service=="Tow" ?
+            {service=="Tow Service" ?
             <>
                 <li className="rounded-full bg-blue-500   w-5 h-5 hover:cursor-pointer" onClick={()=>{
                    if(step>=1){
