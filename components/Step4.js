@@ -84,7 +84,7 @@ export default function Step4(){
     useEffect(()=>{
       const source = mainState.address;
       const destination = mainState.dropoffAddress;
-      fetch(`http://localhost:3000/api/getDistance?source=${source}&destination=${destination}`).then(res=>{
+      fetch(`http://127.0.0.1:7777/api/getDistance?source=${source}&destination=${destination}`).then(res=>{
         res.json().then(body=>{
           if(body.distance){
             console.log("//// From step 4 /////",body.distance)
