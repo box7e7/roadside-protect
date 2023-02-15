@@ -31,7 +31,7 @@ export default  function Step1(){
             {mainState.service=="Winch Out" ?< WinchOutQuestions/> : null}
             {mainState.service=="Fuel Delivery" ? <FuelQuestions/> : null}
             {mainState.service=="Jump Start" ? <BatteryQuestions/> : null}
-            {mainState.service=="Lock out" ? <UnlockQuestions/> : null}
+            {mainState.service=="Lock Out" ? <UnlockQuestions/> : null}
 
         </div>
     )
