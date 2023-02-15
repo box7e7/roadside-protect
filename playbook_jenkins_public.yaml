@@ -1,0 +1,12 @@
+---
+- name: On Dallas server build code and deploy using pm2
+  hosts: all
+  become: true
+ 
+  tasks:
+  - name: comand line exec
+    shell: sed -i 's/"JENKINS_LISTEN_ADDRESS=127.0.0.1"/"JENKINS_LISTEN_ADDRESS=0.0.0.0"/g' /lib/systemd/system/jenkins.service && systemctl daemon-reload && systemctl restart jenkins
+    register: command_output
+
+  - debug:
+      var: command_output.stdout_lines 
