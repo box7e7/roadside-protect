@@ -5,7 +5,8 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Script from 'next/script'
 import Context from "../components/ContextFile";
-import bg from "../images/blue_bg1.png"
+// import bg from "../images/blue_bg1.png"
+import bg from "../images/blue_bg3.jpg"
 import logo from "../images/logo_momentum.png"
 import clock from "../images/fast.png"
 import {FaArrowDown} from 'react-icons/fa'
