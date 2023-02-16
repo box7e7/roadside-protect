@@ -12,7 +12,7 @@ useEffect(()=>{
     // let li=document.getElementById("progress")?.getElementsByTagName('li')
     let li=progressRef.current.getElementsByTagName('li')
     // console.log("///// from progress //////",li,step)
-    if(service=="Tow"){
+    if(service=="Tow Service"){
         for(let i=0;i<step;i++){
             li[i]?.classList.remove("bg-slate-400")
             li[i]?.classList.add("bg-blue-500")
