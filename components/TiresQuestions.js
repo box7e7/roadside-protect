@@ -121,7 +121,7 @@ export default  function TiresQuestions(){
                     <Button pill={true} className='w-[70%] font-bold' onClick={()=>{
 
                         if(state.q2=="No"){
-                            dispatch({type:"SERVICE",service:"Tow"})
+                            dispatch({type:"SERVICE",service:"Tow Service"})
                         }
                         else{
 
