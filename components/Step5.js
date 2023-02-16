@@ -13,7 +13,7 @@ const dispatchJob=async function(mainState,dispatch,total){
         service:{
             address:mainState.address,
             contactInfo:{name:mainState.customerInfo.fullName,email:mainState.customerInfo.email,phone:mainState.customerInfo.phone},
-            destinationAddress:mainState.service=="Tow" ? mainState.dropoffAddress: null,
+            destinationAddress:mainState.service=="Tow Service" ? mainState.dropoffAddress: null,
             serviceType:mainState.service,
             vehicleInformation:{make:mainState.vehicle.make,model:mainState.vehicle.model,color:mainState.vehicle.color,year:mainState.vehicle.year}
         }}
