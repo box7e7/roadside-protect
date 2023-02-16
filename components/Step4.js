@@ -89,7 +89,8 @@ export default function Step4(){
           const destination = mainState.dropoffAddress;
           // const host='http://localhost:3000'
           const host='https://dallas.mehdi.cloud'
-          fetch(`${host}/api/getDistance?source=${source}&destination=${destination}`).then(res=>{
+          fetch(`${host}/api/getDistance?source=${source}&destination=${destination}`)
+          .then(res=>{
             res.json().then(body=>{
               if(body.distance){
                 console.log("//// From step 4 /////",body.distance)
@@ -103,6 +104,7 @@ export default function Step4(){
               }
             })
           })
+          .catch(e=>console.log(e))
         }
        
       },[])
