@@ -87,7 +87,7 @@ export default function Step5(){
             <div className='border-2 border-slate-200 w-full py-2 text-center bg-slate-400 text-white rounded-md font-bold'>Location</div>
             <div className='mt-1 p-3 text-slate-700'>{`${mainState.address} Service`}</div>
 
-            {mainState.service=="Tow" ?
+            {mainState.service=="Tow Service" ?
             <>
                 <div className='border-2 border-slate-200 w-full py-2 text-center bg-slate-400 text-white rounded-md font-bold'>Drop off</div>
                 <div className='mt-1 p-3 text-slate-700'>{`${mainState.dropoffAddress} Service`}</div>
