@@ -1,7 +1,8 @@
 import { PrismaClient } from '@prisma/client'
 import Navbar from "../components/Navbar"
 import MainHome from "../components/MainHome"
-import Service from "../components/Services"
+import Service from "../components/website/Services"
+// import Service from "../components/Services"
 import Gallery from "../components/Gallery"
 // import Testimonials from "../components/Testimonials"
 import TestimonialsPages from '../components/TestimonialsPages'
