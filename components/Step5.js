@@ -82,7 +82,7 @@ export default function Step5(){
             </div>
 
             <div className='border-2 border-slate-200 w-full py-2 text-center bg-slate-400 text-white rounded-md font-bold'>Requested Job</div>
-            <div className='mt-1 p-3 text-slate-700'>{`${mainState.service} Service`}</div>
+            <div className='mt-1 p-3 text-slate-700'>{`${mainState.service}`}</div>
 
             <div className='border-2 border-slate-200 w-full py-2 text-center bg-slate-400 text-white rounded-md font-bold'>Location</div>
             <div className='mt-1 p-3 text-slate-700'>{`${mainState.address} Service`}</div>
