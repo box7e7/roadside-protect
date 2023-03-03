@@ -88,7 +88,7 @@ export default function GetAddress(){
             </div>
             
             <div className="flex flex-col justify-center items-center bg-black">
-                <Image className="w-full h-[400px] md:h-[600px] opacity-40" src={bg}  alt=""/> 
+                <Image className="w-full h-[400px] md:h-[600px] opacity-40" src={bg}  alt="" /> 
                 {/* enter here your code */}
                 <div className='absolute top-[100px] flex items-center justify-center pt-10 w-full'>
                    <input type="text" id="autocomplete" className="border-2 border-slate-300 w-[85%] rounded-md p-2 outline-0 outline-none text-slate-900 bg-slate-100 bg-opacity-80 hover:bg-opacity-90 placeholder-slate-500 " placeholder='Enter address here'/>
