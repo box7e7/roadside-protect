@@ -67,7 +67,7 @@ export default function Service(){
             <div className='grid grid-cols-2 md:grid-cols-3 gap-10 ml-10 mr-10 pt-10'>
                 <div className='flex flex-col justify-center items-center shadow hover:shadow-lg hover:rounded-xl h-48'>
                     <div className='relative'>
-                      <Image className="mx-auto pt-2" src={fuelIcon} style={{width:"70px",height:"70px"}} alt=""/>
+                      <Image className="mx-auto pt-2 -mb-1" src={fuelIcon} style={{width:"70px",height:"70px"}} alt=""/>
                       <div class="absolute inline-flex items-center justify-center w-12 h-12 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-6 -right-6 dark:border-gray-900">
                           <span className="text-lg font-bold font-serif">$50</span>
                       </div>
@@ -84,7 +84,7 @@ export default function Service(){
                         <span className=" font-bold font-serif text-sm">call now </span>
                     </div>
                   </div>
-                  <a>Stuck</a>
+                  <a>Winch Out</a>
                </div>
 
                <div className='flex flex-col justify-center items-center shadow hover:shadow-lg hover:rounded-xl hover:cursor-pointer' onClick={()=>{
