@@ -10,6 +10,7 @@ import carStuckInMud from "../images/car_stuck_in_mud_1_blue.png"
 import fuelIcon from "../images/fuel-icon_blue.png"
 import iconBatteries from "../images/icon_battery_0.png"
 import unlockIcon from "../images/icon_lockout_0.png"
+import motorCycle from "../images/motorCycle.png"
 
 
 
@@ -19,7 +20,7 @@ export default function Service(){
     const router = useRouter()
     return(
        
-             <div className='bg-white h-[450px] flex items-center justify-center pb-10'>
+             <div className='bg-white h-[550px] flex items-center justify-center pb-10 pt-20'>
              
              <div className='flex flex-col space-y-3'>
                 <div className="flex flex-row  justify-center pb-10">
@@ -46,7 +47,13 @@ export default function Service(){
                     </div>
                 </div>
 
-                <div className="flex flex-row  justify-center">
+
+
+              
+              
+
+
+                <div className="flex flex-row  justify-center pb-10">
                   
                   <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
                     router.push("/location")
@@ -70,8 +77,41 @@ export default function Service(){
                   </div>
                 
                 </div>
+
+                {/* 00000000 */}
+                <div className="flex flex-row  justify-center pb-20">
+                  
+                  <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                    router.push("/location")
+                    dispatch({type:"SERVICE",service:"Fuel Delivery"})
+                    }}>
+                    {/* <IconComponent text="Fuel Delivery" icon={<Image className='p-3' src={fuelIcon} alt="Fuel delivery"/>} /> */}
+                  </div>
+                
+                  <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                      router.push("/location")
+                      dispatch({type:"SERVICE",service:"Tow Motorcycle"})
+                    }}>
+                      <IconComponent text="Tow Motorcycle" icon={<Image className='p-3' src={motorCycle} alt="MotorCylce"/>} />
+                  </div>
+                  
+                  <div className='relative mx-5 hover:cursor-pointer 'onClick={()=>{
+                    router.push("/location")
+                    dispatch({type:"SERVICE",service:"Lock Out"})
+                    }}>
+                    {/* <IconComponent text="Lock Out" icon={<Image className='p-3' src={unlockIcon} alt="Unlock your Car"/>} /> */}
+                  </div>
+                
+                </div>
+                {/* 0000000000 */}
+             
+             
+             
+             
              </div>
-            
+
+
+
             </div>
          
       
