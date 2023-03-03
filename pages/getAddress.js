@@ -100,7 +100,7 @@ export default function GetAddress(){
                   dispatch({type:"STEPS",steps:1})
                   setVisible(true)
                   document.body.style.overflow = 'hidden'
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  window.scrollTo({ top: 0, behavior: 'smooth' }); 
                 }}>Confirm address</div> : null}
 
                 {/* above your code */}
