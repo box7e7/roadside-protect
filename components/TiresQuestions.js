@@ -83,7 +83,8 @@ export default  function TiresQuestions(){
                     <button name="q1" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q1",state,setState)}>Yes</button>
                     <button name="q1" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q1",state,setState)}>No</button>
                 </div>
-               
+                {state.q1=="No" ?<div className='pt-5 text-red-600 text-center'>In this case we offer towing to a tire shop of your choice, when you click on Next button tow serive will be initiated</div> : null}
+
                 {/* Question 2 */}
                 <div className='pt-5 pb-5'>Do you have wheel lock key?</div>
                 <div className='flex items-center justify-center space-x-4'>
@@ -120,7 +121,7 @@ export default  function TiresQuestions(){
              <div className='w-full flex items-center justify-center py-10'>
                     <Button pill={true} className='w-[70%] font-bold' onClick={()=>{
 
-                        if(state.q2=="No"){
+                        if(state.q1=="No" || state.q2=="No" ){
                             dispatch({type:"SERVICE",service:"Tow Service"})
                         }
                         else{
