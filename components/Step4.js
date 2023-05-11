@@ -88,7 +88,8 @@ export default function Step4(){
           const source = mainState.address;
           const destination = mainState.dropoffAddress;
           // const host='http://localhost:3000'
-          const host='https://dallas.mehdi.cloud'
+          // const host='https://dallas.mehdi.cloud'
+          const host='https://momentum-roadside.com'
           fetch(`${host}/api/getDistance?source=${source}&destination=${destination}`)
           .then(res=>{
             res.json().then(body=>{
