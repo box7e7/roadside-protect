@@ -46,7 +46,7 @@ export default function Step5(){
             vehicleInformation:{make:mainState.vehicle.make,model:mainState.vehicle.model,color:mainState.vehicle.color,year:mainState.vehicle.year}
         }})
         
-        mainState.distance ? (mainState.distance>5 ? setTotal(Math.ceil(75+(mainState.distance-5)*3.5)) : setTotal(75)) : setTotal(75)
+        mainState.distance ? (mainState.distance>1 ? setTotal(Math.ceil(90+(mainState.distance-1)*5)) : setTotal()) : setTotal(90)
 
         
             if(mainState.service=="Tow Service"){
