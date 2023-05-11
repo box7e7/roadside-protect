@@ -51,8 +51,8 @@ export default function Step5(){
         
             if(mainState.service=="Tow Service"){
                 if(mainState.distance){
-                    if(mainState.distance>5){
-                        setTotal(Math.ceil(75+(mainState.distance-5)*3.5))
+                    if(mainState.distance>1){
+                        setTotal(Math.ceil(90+(mainState.distance-1)*5))
                     }
                     else{
                         setTotal(75)
