@@ -45,6 +45,7 @@ export default function Service(){
                       }}>
                       <IconComponent text="Winch Out" icon={<Image  className='w-[65px] h-[40px]' src={carStuckInMud} alt="Winch out"/> } />
                     </div>
+                
                 </div>
 
 

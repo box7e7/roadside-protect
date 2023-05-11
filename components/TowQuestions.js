@@ -117,6 +117,7 @@ export default  function TowQuestions(){
                     <button name="q6" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q6",state,setState)}>Yes</button>
                     <button name="q6" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q6",state,setState)}>No</button>
                 </div>
+                
 
                 </div>
 
@@ -138,6 +139,7 @@ export default  function TowQuestions(){
              <div className='w-full flex items-center justify-center py-10'>
                     <Button pill={true} className='w-[70%] font-bold' onClick={()=>{
                         if(state.q1 && state.q2 && state.q3 && state.q4 && state.q5 && state.q6 && !selected.includes("Select")){
+                          dispatch({type:"QUESTIONS",questions:{"BrokenAxle":state.q2}})  
                           dispatch({type:"STEPS",steps:2})
                           
                         }
