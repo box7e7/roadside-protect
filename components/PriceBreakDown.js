@@ -40,7 +40,7 @@ const PriceBreakdownComponent = ({mainState}) => {
 
   return (
     <div className="container mx-auto py-8">
-      <div className="w-[350px] mx-auto">
+      <div className="w-[400px] mx-auto">
         <div className="bg-gray-100 p-4 rounded-lg">
           <div className="flex justify-between items-center cursor-pointer" onClick={togglePriceBreakdown}>
             <h1></h1>
