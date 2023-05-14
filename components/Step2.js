@@ -84,11 +84,13 @@ export default function Step2(){
             </div>
 
              {/* Question 7 */}
+             {mainState.service=="Tow Service" ? <>
              <div className='pt-5 pb-5 text-center'>Does the vehicle weigh more than 8500 lbs (3855 kilograms)? <br/><i>it is important to answer this question correctly, towing price may change based on vehicle weight.</i></div>
                 <div className='flex items-center justify-center space-x-4'>
                     <button name="q7" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q7",state,setState)}>Yes</button>
                     <button name="q7" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q7",state,setState)}>No</button>
-                </div>
+                </div> 
+             </>: null}
 
             {/* Here Next button */}
             <div className='w-full flex items-center justify-center py-10'>
@@ -109,7 +111,7 @@ export default function Step2(){
                         }
                 }
                 
-                if (arr_boolean.includes(false) || state.q7==null){
+                if (arr_boolean.includes(false) || (mainState.service=="Tow Service" ? state.q7==null: false)){
                     console.log("//// All fields are required ////")
                     alertFunc()
                 }

@@ -8,6 +8,7 @@ import Gallery from "../components/Gallery"
 import TestimonialsPages from '../components/TestimonialsPages'
 import About from "../components/About"
 import Review from '../components/Reviews'
+import Chatbot from '../components/ChatBot'
 
 
 
@@ -75,6 +76,7 @@ export default function roadside({data}){
 
     return(
         <div id="roadside" className="h-full">
+          
             <Navbar/>
             <MainHome/>
             <Service/>
@@ -83,6 +85,8 @@ export default function roadside({data}){
             <TestimonialsPages data={data}/>
             <About/>
             <Review/>
+            {/* <Chatbot/> */}
+            
         </div>
        
     )
