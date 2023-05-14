@@ -6,6 +6,13 @@ import SelectCar from './SelectCar'
 import car from "../images/car_Blue.png"
 
 
+
+let Dict_MD={"Ford":["F250","F350","F450","Transit 250","Transit 350","Ecoline E250","Ecoline E350"],
+             "Mercedes-Benz":["Sprinter 2500","Sprinter 3500","Sprinter 4500"],
+             "Chevrolet":["Silverado 2500","Silverado 3500","Silverado (Classic) 2500","Silverado (Clasic) 3500","Express 2500","Express 3500"],
+             "GMC":["Sierra 2500","Sierra 3500","Sierra (Classic) 2500","Sierra (Classic) 3500","Sevana 2500","Sevana 3500"],
+             "Ram":["2500","3500","4500","ProMaster 2500","ProMaster 3500","ProMaster 4500"]}
+
 const alertFunc=()=>{
     clearTimeout()
     let btn=document.getElementById("alert0")
@@ -73,6 +80,10 @@ setSelectedValues(arr1)
 export default function Step2(){
     const {mainState,dispatch}=useContext(Context)
     const [state,setState]=useState({q7:null})
+    const [mediumDuty,setMediumDuty]=useState(false)
+
+    // console.log("///// $$$$ //////\n",Object.entries(Dict_MD),Object.keys(Dict_MD),mediumDuty)
+   
     return(
        <>
             <div>
@@ -84,13 +95,13 @@ export default function Step2(){
             </div>
 
              {/* Question 7 */}
-             {mainState.service=="Tow Service" ? <>
+             {/* {mainState.service=="Tow Service" ? <>
              <div className='pt-5 pb-5 text-center'>Does the vehicle weigh more than 8500 lbs (3855 kilograms)? <br/><i>it is important to answer this question correctly, towing price may change based on vehicle weight.</i></div>
                 <div className='flex items-center justify-center space-x-4'>
                     <button name="q7" value="yes" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3' onClick={(e)=>toggleButton(e,"q7",state,setState)}>Yes</button>
                     <button name="q7" value="no" className='pt-3 rounded border border-slate-300 w-24 h-10 flex justify-center items-center py-3'  onClick={(e)=>toggleButton(e,"q7",state,setState)}>No</button>
                 </div> 
-             </>: null}
+             </>: null} */}
 
             {/* Here Next button */}
             <div className='w-full flex items-center justify-center py-10'>
@@ -110,13 +121,28 @@ export default function Step2(){
                             }
                         }
                 }
+                let md="No"
+                console.log("///// Selected values //////",arr1)
+                if (Object.keys(Dict_MD).includes(arr1[0])){
+                    console.log("^^^^^^^^^",Dict_MD[arr1[0]])
+                    Dict_MD[arr1[0]].forEach(element => {
+                        if(arr1[1].includes(element)){
+                            console.log("////// Medium Duty ///////")
+                            md="Yes"
+                            setMediumDuty(true)
+                        }
+                        
+                    });
+                }
                 
-                if (arr_boolean.includes(false) || (mainState.service=="Tow Service" ? state.q7==null: false)){
+                if (arr_boolean.includes(false) || (mainState.service=="Tow Service" ? false : false)){
+                // if (arr_boolean.includes(false) || (mainState.service=="Tow Service" ? state.q7==null: false)){
                     console.log("//// All fields are required ////")
                     alertFunc()
                 }
                 else{
-                    dispatch({type:"VEHICLE",vehicle:{make:arr1[0],model:arr1[1],color:arr1[2],year:arr1[3],"Medium Duty":state.q7}})
+                    dispatch({type:"VEHICLE",vehicle:{make:arr1[0],model:arr1[1],color:arr1[2],year:arr1[3],"Medium Duty":md}})
+                    // dispatch({type:"VEHICLE",vehicle:{make:arr1[0],model:arr1[1],color:arr1[2],year:arr1[3],"Medium Duty":state.q7}})
                     mainState.service=="Tow Service" ? dispatch({type:"STEPS",steps:3}) : dispatch({type:"STEPS",steps:4})
                 }
                 

@@ -91,7 +91,7 @@ const SelectBox=({selected,setSelected,arrayObj})=>{
     )
 }
 
-export default function SelectCar() {
+export default function SelectCar({model0}) {
   const [selected, setSelected] = useState("Select Make")
   const [selectedModel, setSelectedModel] = useState("Select Model")
   const [selectedColor, setSelectedColor] = useState("Select Color")
@@ -101,6 +101,7 @@ export default function SelectCar() {
   useEffect(()=>{
       setModels(carlist[selected])
       setSelectedModel("Select Model")
+      model0=carlist[selected]
   
   },[selected])
   
