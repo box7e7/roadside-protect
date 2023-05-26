@@ -5,6 +5,7 @@ import ImageUploadComponent from '../components/ImageUpload';
 import ImagesPage from "../components/ImagesList"
 import { useRouter } from 'next/router';
 import Navbar from "../components/LoginNavbar"
+import getConfig from 'next/config';
 
 
 

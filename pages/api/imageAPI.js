@@ -29,28 +29,29 @@ import _ from 'lodash'
         res.status(200).json({ files: files })
     }
     else if(req.query.ops=='delete' && delete_images){
-        const galleryFolder = path.join(process.cwd(), 'public/gallery');
+        const galleryFolder = path.join(process.cwd(), '/public/gallery');
         console.log("///// body ////// ",req.body)
         
         // Loop through the files and delete each one
-        req.body.forEach((file) => {
+        req.body.forEach(async(file) => {
         const filePath = path.join(galleryFolder, file);
   
         // Use fs.unlink to delete the file
         fs.unlink(filePath, (err) => {
-          if (err) {
+            if (err) {
             // Handle error if the file cannot be deleted
             console.error('Error deleting file:', err);
-            res.status(400).json({ status: `error ${err}` })
+            return res.status(500).json({ error: 'Error occurred during file upload.' });
                 }
             else{
-                res.status(200).json({ status: "files deleted" })
+                // return res.status(200).json({ status: "files deleted" })
+                console.log("file deleted")
             }
 
-            });
+        });
         });
 
-        
+        res.status(200).json({ status: "files deleted" })
     }
     else{
         res.status(200).json({ status: "Not allowed" })
