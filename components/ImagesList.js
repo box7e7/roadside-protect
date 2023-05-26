@@ -22,7 +22,12 @@ const ImagesPage = ({handleRefresh,countAdmin,setCountAdmin }) => {
 
     useEffect(()=>{
         const func1=async()=>{
-            const response=await fetch('http://localhost:3000/api/imageAPI?ops=list').then(res=>{
+            
+            const protocol = window.location.protocol;
+            const host = window.location.host;
+            const fullHost = protocol + '//' + host;
+            console.log(fullHost)
+            const response=await fetch(`${fullHost}/api/imageAPI?ops=list`).then(res=>{
                 return res.json()
             })
             console.log("//// response ///////\n",response)
