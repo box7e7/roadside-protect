@@ -32,8 +32,12 @@ const ImageUploadComponent = ({count,setCount}) => {
       selectedFiles.forEach((file, index) => {
         formData.append(`image${index}`, file);
       });
+      const protocol = window.location.protocol;
+      const host = window.location.host;
+      const fullHost = protocol + '//' + host;
+      console.log(fullHost)
 
-      await axios.post('/api/upload', formData, {
+      await axios.post(`${fullHost}/api/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

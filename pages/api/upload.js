@@ -27,7 +27,7 @@ options.maxFileSize = 4000 * 1024 * 1024;
     let { accessToken } = await getAccessToken(req, res);
     var decoded = jwt_decode(accessToken);
     console.log(jwt_decode(accessToken, { header: true }))
-    console.log("///// decoded permission //////",decoded.permissions)
+    console.log("///// decoded permission upload.js //////",decoded.permissions)
     // console.log("///// access token //////",accessToken)
 
     let add_images=false
