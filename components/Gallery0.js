@@ -29,11 +29,18 @@ import { useEffect, useState } from "react";
 export default function TestimonialsPages(){
     // let arr1=[1,2,3,4,5,6,7,8,9,10,11,12]
     const [list,setList]=useState([])
+    const [host,setHost]=useState("http://localhost")
     
-    console.log("/////// list /////////\n",list)
+    console.log("/////// list host  /////////\n",list,host)
     
     useEffect(()=>{
         asyncFetch().then(res=>setList(res))
+        
+        const protocol = window.location.protocol;
+        const host = window.location.host;
+        const fullHost = protocol + '//' + host;
+        console.log("///// fullhost //////",fullHost)
+        setHost(fullHost)
     },[])
 
     return(
@@ -59,7 +66,7 @@ export default function TestimonialsPages(){
                                     
                                     <div key={item} class="m-4">
                                         {/* <Image src={`/gallery/IMG_${item}.JPG`} width="800" height="800" class="rounded-lg w-96 h-96" alt=""/> */}
-                                        <Image src={`/gallery/${item}`} width="800" height="800" class="rounded-lg w-96 h-96" alt=""/>
+                                        <Image src={`${host}/gallery/${item}`} width="800" height="800" class="rounded-lg w-96 h-96" alt=""/>
                                     </div>
                                         
                                 </div>
@@ -93,7 +100,7 @@ export default function TestimonialsPages(){
                         <div key={item} className="flex  justify-center shadow-md rounded-lg hover:shadow-2xl p-5">
                             <div  className="w-80">
                                 {/* <Image src={`/gallery/IMG_${item}.JPG`} width="800" height="800" class="rounded-lg w-80 h-80" alt=""/> */}
-                                <Image src={`/gallery/${item}`} width="800" height="800" class="rounded-lg w-96 h-72" alt=""/>
+                                <Image src={`${host}/gallery/${item}`} width="800" height="800" class="rounded-lg w-96 h-72" alt=""/>
                             </div>
                         </div>
                     
