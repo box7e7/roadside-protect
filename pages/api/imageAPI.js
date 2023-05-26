@@ -13,7 +13,7 @@ import _ from 'lodash'
     var decoded = jwt_decode(accessToken);
     console.log(jwt_decode(accessToken, { header: true }))
     console.log("///// decoded permission //////",decoded.permissions)
-    console.log("///// access token //////",accessToken)
+    // console.log("///// access token //////",accessToken)
 
     let list_images=false
     let delete_images=false

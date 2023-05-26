@@ -28,7 +28,7 @@ options.maxFileSize = 4000 * 1024 * 1024;
     var decoded = jwt_decode(accessToken);
     console.log(jwt_decode(accessToken, { header: true }))
     console.log("///// decoded permission //////",decoded.permissions)
-    console.log("///// access token //////",accessToken)
+    // console.log("///// access token //////",accessToken)
 
     let add_images=false
     _.includes(decoded.permissions, 'add:files') ? add_images=true : null
@@ -54,6 +54,8 @@ options.maxFileSize = 4000 * 1024 * 1024;
               const oldPath = `${files[image].filepath}`;
               const uniqueFileName = `${files[image].originalFilename}`;
               const newPath = path.join(process.cwd(), `/public/gallery/${uniqueFileName}`)
+
+              console.log(files[image].originalFilename,files[image].filepath,oldPath,newPath)
         
               // Move the file from temporary location to the desired directory
               fs.copyFile(oldPath, newPath, (err) => {
