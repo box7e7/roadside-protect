@@ -27,9 +27,9 @@ export default function Admin(){
         <Navbar user={user}/>
         {user ? <ImageUploadComponent count={countAdmin} setCount={setCountAdmin}/> : null }
         {user ? <ImagesPage handleRefresh={handleRefresh} countAdmin={countAdmin} setCountAdmin={setCountAdmin}/> : null}
-
-        {/* <ImageUploadComponent/>
-        <ImagesPage handleRefresh={handleRefresh}/>  */}
+{/* 
+        <ImageUploadComponent count={countAdmin} setCount={setCountAdmin}/>
+        <ImagesPage handleRefresh={handleRefresh} countAdmin={countAdmin} setCountAdmin={setCountAdmin}/>  */}
 
     </div>
  )
