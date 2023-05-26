@@ -66,7 +66,7 @@ export default function TestimonialsPages(){
                                     
                                     <div key={item} class="m-4">
                                         {/* <Image src={`/gallery/IMG_${item}.JPG`} width="800" height="800" class="rounded-lg w-96 h-96" alt=""/> */}
-                                        <Image src={`${host}/gallery/${item}`} width="800" height="800" class="rounded-lg w-96 h-96" alt=""/>
+                                        <Image src={`${host}/api/serveFile?fileName=${item}`} width="800" height="800" class="rounded-lg w-96 h-96" alt=""/>
                                     </div>
                                         
                                 </div>
@@ -100,7 +100,7 @@ export default function TestimonialsPages(){
                         <div key={item} className="flex  justify-center shadow-md rounded-lg hover:shadow-2xl p-5">
                             <div  className="w-80">
                                 {/* <Image src={`/gallery/IMG_${item}.JPG`} width="800" height="800" class="rounded-lg w-80 h-80" alt=""/> */}
-                                <Image src={`${host}/gallery/${item}`} width="800" height="800" class="rounded-lg w-96 h-72" alt=""/>
+                                <Image src={`${host}/api/serveFile?fileName=${item}`} width="800" height="800" class="rounded-lg w-96 h-72" alt=""/>
                             </div>
                         </div>
                     
