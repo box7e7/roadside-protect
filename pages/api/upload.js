@@ -32,13 +32,14 @@ options.maxFileSize = 4000 * 1024 * 1024;
 
     let add_images=false
     _.includes(decoded.permissions, 'add:files') ? add_images=true : null
-    console.log("///// decoded permission upload.js //////",decoded.permissions,add_images)
+    console.log("///// decoded permission upload.js //////", decoded.permissions,add_images)
 
 
    if(add_images){
     try {
       const form = formidable(options);
       form.parse(req, (err, fields, files) => {
+        console.log("/////// inside form.parse upload.js //////")
         if (err) {
           res.status(400).json({ status: err });
           console.log("////// err upload.js /////", err)
@@ -52,7 +53,7 @@ options.maxFileSize = 4000 * 1024 * 1024;
             const { image } = files;
             // Process the file as needed
             // You can access the file properties like image.name, image.type, image.filepath, etc.
-            console.log("////// files uplaod.js",files)
+            console.log("////// files upload.js ///////",files)
             Object.keys(files).forEach(image=>{
               console.log(files[image].originalFilename,files[image].filepath)
               
@@ -75,11 +76,7 @@ options.maxFileSize = 4000 * 1024 * 1024;
         
       });
   
-     
-  
-      
-  
-      res.status(200).json({ message: 'File uploaded successfully!' });
+     res.status(200).json({ message: 'File uploaded successfully!' });
     
     } catch (error) {
       console.error('Error uploading file:', error);
