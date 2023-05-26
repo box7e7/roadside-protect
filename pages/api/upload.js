@@ -7,11 +7,11 @@ import jwt_decode from "jwt-decode";
 import _, { add } from 'lodash'
 
 
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 
 const options= {}
