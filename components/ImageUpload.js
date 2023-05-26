@@ -37,7 +37,7 @@ const ImageUploadComponent = ({count,setCount}) => {
       const fullHost = protocol + '//' + host;
       console.log(fullHost)
 
-      await axios.post(`${fullHost}/api/upload`, formData, {
+      await axios.post(`${fullHost}/api/upPics`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
