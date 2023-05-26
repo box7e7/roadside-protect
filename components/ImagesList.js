@@ -36,7 +36,7 @@ const ImagesPage = ({handleRefresh,countAdmin,setCountAdmin }) => {
             response.files ? setPermitted(true) : null
         
         }
-        
+
         func1()
     },[count])
 
@@ -103,7 +103,8 @@ const ImagesPage = ({handleRefresh,countAdmin,setCountAdmin }) => {
             <div id={fileName} key={fileName} className="flex flex-col items-center justify-between">
                 <div className='relative'>
                     <Image
-                    src={`/gallery/${fileName}`}
+                    // src={`/gallery/${fileName}`}
+                    src={`http://localhost:3000/api/serveFile?fileName=${fileName}`}
                     alt={fileName}
                     width="500"
                     height="500"
