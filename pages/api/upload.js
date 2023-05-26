@@ -50,7 +50,7 @@ options.maxFileSize = 4000 * 1024 * 1024;
             const { image } = files;
             // Process the file as needed
             // You can access the file properties like image.name, image.type, image.filepath, etc.
-          
+            console.log("////// files uplaod.js",files)
             Object.keys(files).forEach(image=>{
               console.log(files[image].originalFilename,files[image].filepath)
               
