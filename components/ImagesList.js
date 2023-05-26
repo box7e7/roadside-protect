@@ -22,7 +22,7 @@ const ImagesPage = ({handleRefresh,countAdmin,setCountAdmin }) => {
 
     useEffect(()=>{
         const func1=async()=>{
-            
+
             const protocol = window.location.protocol;
             const host = window.location.host;
             const fullHost = protocol + '//' + host;
@@ -34,7 +34,9 @@ const ImagesPage = ({handleRefresh,countAdmin,setCountAdmin }) => {
             
             response.files ? setImageList(response.files) : null
             response.files ? setPermitted(true) : null
+        
         }
+        
         func1()
     },[count])
 

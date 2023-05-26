@@ -42,6 +42,7 @@ options.maxFileSize = 4000 * 1024 * 1024;
         if (err) {
           reject(err);
           res.status(400).json({ status: err });
+          console.log("////// err upload.js", err)
 
         }
         else{
