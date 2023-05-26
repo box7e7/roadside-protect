@@ -4,7 +4,7 @@ import path from "path";
 import fs from "fs";
 import { getAccessToken, withApiAuthRequired } from '@auth0/nextjs-auth0';
 import jwt_decode from "jwt-decode";
-import _ from 'lodash'
+import _, { add } from 'lodash'
 
 
 export const config = {
@@ -27,11 +27,12 @@ options.maxFileSize = 4000 * 1024 * 1024;
     let { accessToken } = await getAccessToken(req, res);
     var decoded = jwt_decode(accessToken);
     console.log(jwt_decode(accessToken, { header: true }))
-    console.log("///// decoded permission upload.js //////",decoded.permissions)
+    
     // console.log("///// access token //////",accessToken)
 
     let add_images=false
     _.includes(decoded.permissions, 'add:files') ? add_images=true : null
+    console.log("///// decoded permission upload.js //////",decoded.permissions,add_images)
 
 
    if(add_images){
@@ -40,6 +41,8 @@ options.maxFileSize = 4000 * 1024 * 1024;
       form.parse(req, (err, fields, files) => {
         if (err) {
           reject(err);
+          res.status(400).json({ status: err });
+
         }
         else{
             // console.log({ fields, files })
