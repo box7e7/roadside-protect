@@ -49,7 +49,7 @@ export default function TestimonialsPages(){
 
         <div className="flex flex-col justify-center items-center" style={{paddingTop:"100px"}}>
         <div className="" style={{width:"40px",borderTop: "3px white solid"}}></div>
-        <div className="mt-3" style={{color: "white", fontFamily: "libre baskerville", fontWeight:"lighter", fontSize: "26px"}}>Gallery </div>
+        <div className="mt-3 md:pb-20 lg:pb-0" style={{color: "white", fontFamily: "libre baskerville", fontWeight:"lighter", fontSize: "26px"}}>Gallery </div>
         </div>
         {/* Shown for small screens */}
         <div className="md:mt-[-100px]">
@@ -91,7 +91,7 @@ export default function TestimonialsPages(){
             {chunk(list,6).map((arr,index)=>{
 
             console.log("////// key //////",index)
-            return <div key={index} className="md:grid  md:grid-cols-3 gap-y-6 gap-x-6 w-[80%] hidden   ">
+            return <div key={index} className="md:grid  md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 w-[80%] hidden">
 
                     {arr.map((item)=>{
 
