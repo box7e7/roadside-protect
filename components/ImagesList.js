@@ -6,6 +6,11 @@ import MyComponent from '../components/CounterComponent';
 
 
 const ImagesPage = ({handleRefresh,countAdmin,setCountAdmin }) => {
+
+  const protocol = window.location.protocol;
+  const host = window.location.host;
+  const fullHost = protocol + '//' + host;
+  console.log(fullHost)
   
    
   
@@ -22,11 +27,6 @@ const ImagesPage = ({handleRefresh,countAdmin,setCountAdmin }) => {
 
     useEffect(()=>{
         const func1=async()=>{
-
-            const protocol = window.location.protocol;
-            const host = window.location.host;
-            const fullHost = protocol + '//' + host;
-            console.log(fullHost)
             const response=await fetch(`${fullHost}/api/imageAPI?ops=list`).then(res=>{
                 return res.json()
             })
@@ -104,7 +104,7 @@ const ImagesPage = ({handleRefresh,countAdmin,setCountAdmin }) => {
                 <div className='relative'>
                     <Image
                     // src={`/gallery/${fileName}`}
-                    src={`http://localhost:3000/api/serveFile?fileName=${fileName}`}
+                    src={`${fullHost}/api/serveFile?fileName=${fileName}`}
                     alt={fileName}
                     width="500"
                     height="500"
