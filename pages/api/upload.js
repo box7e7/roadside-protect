@@ -40,9 +40,10 @@ options.maxFileSize = 4000 * 1024 * 1024;
       const form = formidable(options);
       form.parse(req, (err, fields, files) => {
         if (err) {
-          reject(err);
           res.status(400).json({ status: err });
-          console.log("////// err upload.js", err)
+          console.log("////// err upload.js /////", err)
+          reject(err);
+          
 
         }
         else{
