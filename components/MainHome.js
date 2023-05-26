@@ -1,8 +1,11 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router';
 import PopUpForm from "../components/PopUpForm"
 import bg from "../images/2021-01-28_grey.png"
 
 export default function MainHome(){
+
+    const router = useRouter();
 
     return (
         
@@ -13,7 +16,11 @@ export default function MainHome(){
             </div>
 
             
-            <div style={{height:500}} className=" text-center pt-24  ">
+            <div style={{height:500}} className=" text-center pt-24 flex flex-col  items-center  ">
+                <button  className="bg-[#585af1] rounded-md text-white text-lg" style={{width:"250px", height:"50px", marginTop:"0px",fontFamily:"open sans"}}  data-toggle="modal" data-target="#QuoteModal" onClick={()=>{
+                    router.push('/joinUs')
+                }} >
+                Join Our Provider Network</button>
                 <button  className="bg-white rounded-md" style={{width:"150px", height:"50px", marginTop:"50px",fontFamily:"open sans"}}  data-toggle="modal" data-target="#QuoteModal" onClick={()=>{
 
                   document.getElementById("QuoteModal").classList.remove("hidden")
@@ -25,6 +32,9 @@ export default function MainHome(){
                 <p className=" text-gray-400 md:text-sm pt-3 text-xs" > Fast courteous and inexpensive towing and</p>
                 <p className="text-gray-400 md:text-sm text-xs" > roadside assistance in Houston,TX</p>
             </div>
+
+
+            
 
             <PopUpForm/>
 

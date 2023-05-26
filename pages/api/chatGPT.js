@@ -40,7 +40,7 @@ export default async function handler(req, res) {
         apiKey: process.env.OPENAI_API_KEY,
       });
 
-    const text = await fs.readFile('context.txt', 'utf8');
+    const text = await fs.readFile('context1.txt', 'utf8');
 
     let context = [ {'role':'system', 'content':text} ]  
     context.push(...req.body)

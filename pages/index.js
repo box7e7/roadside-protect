@@ -6,9 +6,12 @@ import Service from "../components/website/Services"
 import Gallery from "../components/Gallery"
 // import Testimonials from "../components/Testimonials"
 import TestimonialsPages from '../components/TestimonialsPages'
+import Gallery0 from '../components/Gallery0'
 import About from "../components/About"
 import Review from '../components/Reviews'
 import Chatbot from '../components/ChatBot'
+// import { useUser } from '@auth0/nextjs-auth0/client';
+
 
 
 
@@ -72,7 +75,8 @@ async function find_records(prisma) {
 
 export default function roadside({data}){
 
-    // console.log(data)
+  // const { user, error, isLoading } = useUser();
+  //   console.log("&&&&&&&&&&&&&&&&&&&&&&&\n",user,error,isLoading)
 
     return(
         <div id="roadside" className="h-full">
@@ -80,7 +84,8 @@ export default function roadside({data}){
             <Navbar/>
             <MainHome/>
             <Service/>
-            <Gallery/>
+            <Gallery0 data={data}/>
+            {/* <Gallery/> */}
             {/* <Testimonials data={data}/> */}
             <TestimonialsPages data={data}/>
             <About/>

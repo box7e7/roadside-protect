@@ -20,6 +20,7 @@ export default function Navbar(){
           <div className="hidden md:flex md:flex-row justify-center items-center pt-5">
             <a  href="tel:281-602-8213" className="white-100 text-white font-sans text-[17px] font-bold">1-281-602-8213</a>
             <a  href="tel:281-602-8213" className=" bg-[#6366F1] p-2 rounded-lg ml-2 w-32 text-slate-100 hover:bg-[#585af1] text-center hover:cursor-pointer">Call now</a>
+           
           </div>
 
           <div className="mx-auto  px-2 sm:px-6 lg:px-8 w-full pb-3">

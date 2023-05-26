@@ -1,6 +1,6 @@
 import { Carousel } from "flowbite-react";
 import { SVgPic } from '../components/SvgPic';
-import { FaPen} from "react-icons/fa";
+import { FaPen } from "react-icons/fa";
 import Review from "../components/Reviews";
 import { chunk } from "lodash";
 
@@ -25,7 +25,7 @@ export default function TestimonialsPages({data}){
          <div id="testimonials" className="pt-20">
  
             
-             <div className="flex flex-col justify-center items-center  ">
+             <div className="flex flex-col justify-center items-center">
                     <div className="" style={{width:"40px",borderTop: "3px black solid"}}></div>
                     <div className="mt-3" style={{color: "black", fontFamily: "libre baskerville", fontWeight:"lighter", fontSize: "26px"}}>Testimonials </div>
              </div>
