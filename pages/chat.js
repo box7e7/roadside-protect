@@ -14,7 +14,7 @@ export default function Design(){
             {/* <TravelPlanner/> */}
         
             </div>
-                <Chatbot/>
+                {/* <Chatbot/> */}
                 
     </div>
     )
