@@ -9,7 +9,7 @@ export default function MainHome(){
 
     return (
         
-        <div id="home" className=' relative flex justify-center  top-[0px]'>
+        <div id="home" className='  w-full relative flex justify-center  top-[0px]'>
 
             <div style={{height:600}} className='absolute w-full  bg-black flex justify-center -z-10 top-[0px] '>
                 <Image className='relative h-full w-full  opacity-40 object-cover' src={bg}   alt="Picture of the author"/>
@@ -17,10 +17,11 @@ export default function MainHome(){
 
             
             <div style={{height:500}} className=" text-center pt-24 flex flex-col  items-center  ">
-                <button  className="bg-[#585af1] rounded-md text-white text-lg" style={{width:"250px", height:"50px", marginTop:"0px",fontFamily:"open sans"}}  data-toggle="modal" data-target="#QuoteModal" onClick={()=>{
+
+                {/* <button  className="bg-[#585af1] rounded-md text-white text-lg" style={{width:"250px", height:"50px", marginTop:"0px",fontFamily:"open sans"}}  data-toggle="modal" data-target="#QuoteModal" onClick={()=>{
                     router.push('/joinUs')
                 }} >
-                Join Our Provider Network</button>
+                Join Our Provider Network</button> */}
                 <button  className="bg-white rounded-md" style={{width:"150px", height:"50px", marginTop:"50px",fontFamily:"open sans"}}  data-toggle="modal" data-target="#QuoteModal" onClick={()=>{
 
                   document.getElementById("QuoteModal").classList.remove("hidden")
