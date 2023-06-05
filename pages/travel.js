@@ -58,7 +58,7 @@ console.log(`////// ${state} /////////`)
                     /> : null}
                     
                 {state!="loading" ? <TravelPlanner setResponse={setResponse} setState={setState}/> : null}
-                {response ? <div className="bg-blue-100 rounded-lg p-8 mt-5 text-[#1A202C] space-y-1 mx-8 my-5 pb-8" dangerouslySetInnerHTML={{ __html: response }} /> : null}
+                {response ? <div className="bg-blue-100 rounded-lg p-8 mt-5 text-[#1A202C] space-y-1 mx-8 my-5 pb-8 mb-8" dangerouslySetInnerHTML={{ __html: response }} /> : null}
                 {/* {response ? <div className="bg-blue-100 rounded-lg p-8 mt-5 text-[#1A202C] space-y-1 mx-3" dangerouslySetInnerHTML={{ __html: convertMarkdownToHtml(response) }} /> : null} */}
             </div>
             {/* <TravelPlanner setResponse={setResponse}/> */}

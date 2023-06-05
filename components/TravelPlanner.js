@@ -103,7 +103,7 @@ const TravelPlanner = ({setResponse,setState}) => {
 
             </div>
             
-            <div className="pl-3 pr-4 mv-2 text-lg w-full">
+            <div className="pl-3 pr-4 mv-2 text-lg">
 
               <div data-text="Los Angeles, California, United States" className="flex items-center justify-between w-full cursor-pointer text-slate-100 hover:text-slate-400" onClick={(e)=>{
                 funcPlace(e);
