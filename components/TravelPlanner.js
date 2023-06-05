@@ -54,7 +54,7 @@ const TravelPlanner = ({setResponse,setState}) => {
           },
         });
         const data = await res.json();
-       console.log(data.response)
+       console.log(data)
        setResponse(data.response)
        setState("finished")
       } catch (error) {
