@@ -36,7 +36,7 @@ const TravelPlanner = ({setResponse,setState}) => {
       2. Itinerary options including flights, trains and buses to get to ${document.getElementById("place").value} from Dubai  - This needs to be brief and summarized result. Headline and title must be styled for this paragraph.
       3. Estimated Price should be included. Headline and title must be styled for this paragraph.
       4. List Activities and restaurants within walking distance from ${document.getElementById("place").value}. Headline and title must be styled for this paragraph.
-      5. Estimated time needed to visit proposed places. Headline and title must be styled for this paragraph.`
+      5. Estimated time needed to visit proposed places. Headline and title must be styled for this paragraph.` 
     
 
 
