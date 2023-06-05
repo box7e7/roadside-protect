@@ -9,7 +9,7 @@ sed 's/^.*\(Location: res.getHeader('"'"'Location'"'"') || openidState.returnTo 
 # Replace the original file with the modified file
 mv "$temp_file" "$file"
 
-echo "Modification completed."
+echo "Modification completed." 
 
 
 
