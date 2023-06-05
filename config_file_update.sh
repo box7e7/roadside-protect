@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file="/node_modules/@auth0/nextjs-auth0/dist/auth0-session/handlers/callback.js"
+file="./node_modules/@auth0/nextjs-auth0/dist/auth0-session/handlers/callback.js"
 temp_file="/tmp/callback.js"
 
 # Comment out the original line and add the new line
