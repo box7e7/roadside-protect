@@ -4,7 +4,8 @@ const nextConfig = {
   images: {
     domains: [
         "localhost",
-        "momentum-roadside.com"
+        "momentum-roadside.com",
+	"jenkins.mehdi.cloud"
     ],
 },
 }
