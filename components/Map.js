@@ -6,7 +6,7 @@ import GoogleMapReact from 'google-map-react';
 
 
 
-const AnyReactComponent = ({ loc,dispatch,textArea,setVisible }) => {   
+const AnyReactComponent = ({ loc,dispatch,textArea,setVisible }) => {    
 
     const router = useRouter()
     // console.log("////// loc from  Map component ///////\n",loc)
@@ -16,7 +16,7 @@ const AnyReactComponent = ({ loc,dispatch,textArea,setVisible }) => {
                 console.info("/////// clicked ////////")
             }}>
                 <div className="flex justify-center items-center" onClick={()=>{
-                    console.info("/////// clicked ////////")
+                    console.info("//////// clicked /////////")
                     dispatch({type:"ADDRESS",address:textArea.street})
                     dispatch({type:"STEPS",steps:1})
                     setVisible(true)
