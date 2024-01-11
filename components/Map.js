@@ -1,5 +1,5 @@
 import React,{useContext} from "react"; 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router'   
 import Context from "../components/ContextFile";
 import GoogleMapReact from 'google-map-react';
 
