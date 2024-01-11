@@ -5,7 +5,8 @@ const nextConfig = {
     domains: [
         "localhost",
         "momentum-roadside.com",
-	"jenkins.mehdi.cloud"
+	"jenkins.mehdi.cloud",
+	"192.168.0.17"
     ],
 },
 }
